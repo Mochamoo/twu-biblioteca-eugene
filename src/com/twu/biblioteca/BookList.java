@@ -21,4 +21,8 @@ public class BookList {
         return list.size();
     }
 
+    public ArrayList<Book> getBooks() {
+        return list;
+    }
+
 }

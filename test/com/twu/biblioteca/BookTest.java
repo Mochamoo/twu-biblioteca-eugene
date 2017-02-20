@@ -25,8 +25,8 @@ public class BookTest {
     }
 
     @Test
-    public void getPublishedYearShouldReturnBooksPublishedYear() {
-        assertEquals(2003, book.getPublishedYear());
+    public void getYearPublishedShouldReturnBooksPublishedYear() {
+        assertEquals(2003, book.getYearPublished());
     }
 
 }

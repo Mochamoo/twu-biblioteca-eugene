@@ -3,12 +3,12 @@ package com.twu.biblioteca;
 public class Book {
     private String title;
     private String author;
-    private int publishYear;
+    private int yearPublished;
 
-    public Book(String title, String author, int publishYear) {
+    public Book(String title, String author, int yearPublished) {
         this.title = title;
         this.author = author;
-        this.publishYear = publishYear;
+        this.yearPublished = yearPublished;
     }
 
     public String getTitle() {
@@ -19,7 +19,7 @@ public class Book {
         return author;
     }
 
-    public int getPublishedYear() {
-        return publishYear;
+    public int getYearPublished() {
+        return yearPublished;
     }
 }
