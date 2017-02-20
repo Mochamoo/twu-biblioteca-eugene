@@ -12,7 +12,7 @@ public class MenuTest {
     }
 
     @Test
-    public void welcome() {
+    public void welcomeShouldPrintWelcomeMessage() {
         assertEquals("===Welcome to Biblioteca!===", menu.welcome());
     }
 
