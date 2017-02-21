@@ -21,4 +21,9 @@ public class LibraryManagementSystemTest {
                      "Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
                      "Test-Driven Development | Kent Beck | 2003\n", libSystem.displayBooks());
     }
+
+    @Test
+    public void checkoutBookShouldDisplayThankYouMessageOnSuccessfulCheckout() {
+        assertEquals("Thank you! Enjoy the book.", libSystem.checkoutBook());
+    }
 }

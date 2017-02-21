@@ -1,10 +1,13 @@
 package com.twu.biblioteca;
 
 public class LibraryManagementSystem {
-    private BookList bookList;
+    private BookList availableBooks;
+    private BookList borrowedBooks;
 
     public LibraryManagementSystem() {
-        bookList = new BookList();
+        availableBooks = new BookList();
+        availableBooks.populateBookList();
+        borrowedBooks = new BookList();
     }
 
     private String displayHeader() {
@@ -14,7 +17,7 @@ public class LibraryManagementSystem {
     public String displayBooks() {
         String headerAndListOfBooks = displayHeader() + "\n";
 
-        for(Book book : bookList.getBooks()) {
+        for(Book book : availableBooks.getBooks()) {
             headerAndListOfBooks += book.getTitle() + " | " +
                                   book.getAuthor() + " | " +
                                   book.getYearPublished() +
@@ -22,5 +25,9 @@ public class LibraryManagementSystem {
         }
 
         return headerAndListOfBooks;
+    }
+
+    public String checkoutBook() {
+        return "";
     }
 }

@@ -11,10 +11,11 @@ public class BookListTest {
     @Before
     public void setUp() throws Exception {
         bookList = new BookList();
+        bookList.populateBookList();
     }
 
     @Test
-    public void bookListShouldHaveFourBooksAtInit() {
+    public void bookListShouldHaveFourBooksAfterPopulating() {
         assertEquals(4, bookList.size());
     }
 
