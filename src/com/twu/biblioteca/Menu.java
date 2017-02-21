@@ -1,7 +1,5 @@
 package com.twu.biblioteca;
 
-import java.util.Scanner;
-
 public class Menu {
     public String welcome() {
         return "===Welcome to Biblioteca!===";

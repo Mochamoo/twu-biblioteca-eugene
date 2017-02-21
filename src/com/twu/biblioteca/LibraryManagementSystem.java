@@ -16,15 +16,21 @@ public class LibraryManagementSystem {
 
     public String displayBooks() {
         String headerAndListOfBooks = displayHeader() + "\n";
+        int bookNumber = 1;
 
         for(Book book : availableBooks.getBooks()) {
-            headerAndListOfBooks += book.getTitle() + " | " +
+            headerAndListOfBooks += bookNumber + ") " + book.getTitle() + " | " +
                                   book.getAuthor() + " | " +
                                   book.getYearPublished() +
                                   "\n";
+            ++bookNumber;
         }
 
         return headerAndListOfBooks;
+    }
+
+    public String chooseBook() {
+        return "";
     }
 
     public String checkoutBook() {

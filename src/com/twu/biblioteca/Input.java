@@ -15,12 +15,12 @@ public class Input {
         return input.next();
     }
 
-    public String validateUserInput(String input) {
+    public String validateUserInput(String input, int listSize) {
         int userSelection;
 
         try {
             userSelection = Integer.parseInt(input);
-            if(userSelection <= 0 || userSelection > user.userOptions.size()) {
+            if(userSelection <= 0 || userSelection > listSize) {
                 throw new NumberFormatException();
             }
 
@@ -34,7 +34,7 @@ public class Input {
     }
 
     public Options convertInputToOption(String input) {
-        return user.userOptions.get(Integer.parseInt(input));
+        return user.getOption(Integer.parseInt(input));
     }
 
     public Options getOption(Menu menu) {
@@ -45,7 +45,7 @@ public class Input {
                 System.out.println("Select a valid option!");
             }
             System.out.println(menu.displayMenu(user));
-            input = validateUserInput(getUserInput());
+            input = validateUserInput(getUserInput(), user.getNumOptions());
         }
 
         return convertInputToOption(input);

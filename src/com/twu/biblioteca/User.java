@@ -28,4 +28,12 @@ public class User {
 
         return availableOptionsToUser.toString();
     }
+
+    public int getNumOptions() {
+        return userOptions.size();
+    }
+
+    public Options getOption(int index) {
+        return userOptions.get(index);
+    }
 }

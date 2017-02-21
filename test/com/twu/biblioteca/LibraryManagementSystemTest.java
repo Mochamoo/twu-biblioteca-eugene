@@ -16,10 +16,10 @@ public class LibraryManagementSystemTest {
     @Test
     public void displayBookListShouldShowAllTitlesAuthorsAndPublishYear() {
         assertEquals("Title | Author | Year Published\n" +
-                     "Introduction to the Design & Analysis of Algorithm | Anany Levitin | 2012\n" +
-                     "Gears of War: Anvil Gate | Karen Travis | 2010\n" +
-                     "Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
-                     "Test-Driven Development | Kent Beck | 2003\n", libSystem.displayBooks());
+                     "1) Introduction to the Design & Analysis of Algorithm | Anany Levitin | 2012\n" +
+                     "2) Gears of War: Anvil Gate | Karen Travis | 2010\n" +
+                     "3) Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
+                     "4) Test-Driven Development | Kent Beck | 2003\n", libSystem.displayBooks());
     }
 
     @Test

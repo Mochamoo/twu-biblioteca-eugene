@@ -10,7 +10,6 @@ public class OptionsTest {
     public void getOptionShouldReturnOptionInString() {
         Options quitOption = Options.QUIT;
 
-        System.out.println(quitOption.getOption());
         assertEquals("Quit", quitOption.getOption());
     }
 }
