@@ -21,6 +21,7 @@ public class Menu {
                 System.out.println(libSystem.checkoutBook());
                 break;
             case RETURN_BOOK:
+                System.out.println(libSystem.returnBook());
                 break;
         }
     }

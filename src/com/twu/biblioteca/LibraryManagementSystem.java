@@ -28,8 +28,8 @@ public class LibraryManagementSystem {
         return headerAndListOfBooks.toString();
     }
 
-    public boolean chooseBook() {
-        CheckoutOptionsInput userInput = new CheckoutOptionsInput();
+    public boolean chooseBookToCheckout() {
+        Input userInput = new Input();
         String selectedOption = userInput.getUserInput();
         Book book;
 
@@ -43,11 +43,42 @@ public class LibraryManagementSystem {
     }
 
     public String checkoutBook() {
-        System.out.println("Please type the name of the book (case/symbol sensitive):");
-        if(chooseBook() == true) {
-            return "Thank you! Enjoy the book.";
+        if(availableBooks.size() == 0) {
+            return "There are currently no books available.\n";
         }
 
-        return "That book is not available.";
+        System.out.println("Please type the name of the book (case/symbol sensitive):");
+        if(chooseBookToCheckout() == true) {
+            return "Thank you! Enjoy the book.\n";
+        }
+
+        return "That book is not available.\n";
+    }
+
+    public boolean chooseBookToReturn() {
+        Input userInput = new Input();
+        String selectedOption = userInput.getUserInput();
+        Book book;
+
+        if((book = borrowedBooks.getBookByTitle(selectedOption)) != null) {
+            availableBooks.addBook(book);
+            borrowedBooks.removeBook(book.getTitle());
+            return true;
+        }
+
+        return false;
+    }
+
+    public String returnBook() {
+        if(borrowedBooks.size() == 0) {
+            return "There are currently no books being borrowed.";
+        }
+
+        System.out.println("Please type the name of the book (case/symbol sensitive):");
+        if(chooseBookToReturn() == true) {
+            return "Thank you for returning the book.";
+        }
+
+        return "That is not a valid book to return.";
     }
 }
