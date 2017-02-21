@@ -3,16 +3,11 @@ package com.twu.biblioteca;
 import java.util.Scanner;
 
 public class Input {
-    User user;
-
-    public Input(User user) {
-        this.user = user;
-    }
 
     public String getUserInput() {
         Scanner input = new Scanner(System.in);
 
-        return input.next();
+        return input.nextLine();
     }
 
     public String validateUserInput(String input, int listSize) {
@@ -33,21 +28,4 @@ public class Input {
         return Integer.toString(userSelection - 1);
     }
 
-    public Options convertInputToOption(String input) {
-        return user.getOption(Integer.parseInt(input));
-    }
-
-    public Options getOption(Menu menu) {
-        String input = null;
-
-        while(input == null || input == "Select a valid option!") {
-            if(input == "Select a valid option!") {
-                System.out.println("Select a valid option!");
-            }
-            System.out.println(menu.displayMenu(user));
-            input = validateUserInput(getUserInput(), user.getNumOptions());
-        }
-
-        return convertInputToOption(input);
-    }
 }

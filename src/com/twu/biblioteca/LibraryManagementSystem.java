@@ -15,25 +15,39 @@ public class LibraryManagementSystem {
     }
 
     public String displayBooks() {
-        String headerAndListOfBooks = displayHeader() + "\n";
-        int bookNumber = 1;
+        StringBuilder headerAndListOfBooks = new StringBuilder();
+        headerAndListOfBooks.append(displayHeader() + "\n");
 
-        for(Book book : availableBooks.getBooks()) {
-            headerAndListOfBooks += bookNumber + ") " + book.getTitle() + " | " +
-                                  book.getAuthor() + " | " +
-                                  book.getYearPublished() +
-                                  "\n";
-            ++bookNumber;
+        for(Book book : availableBooks.getBooks().values()) {
+            headerAndListOfBooks.append(book.getTitle() + " | ");
+            headerAndListOfBooks.append(book.getAuthor() + " | ");
+            headerAndListOfBooks.append(book.getYearPublished());
+            headerAndListOfBooks.append("\n");
         }
 
-        return headerAndListOfBooks;
+        return headerAndListOfBooks.toString();
     }
 
-    public String chooseBook() {
-        return "";
+    public boolean chooseBook() {
+        CheckoutOptionsInput userInput = new CheckoutOptionsInput();
+        String selectedOption = userInput.getUserInput();
+        Book book;
+
+        if((book = availableBooks.getBookByTitle(selectedOption)) != null) {
+            borrowedBooks.addBook(book);
+            availableBooks.removeBook(book.getTitle());
+            return true;
+        }
+
+        return false;
     }
 
     public String checkoutBook() {
-        return "";
+        System.out.println("Please type the name of the book (case/symbol sensitive):");
+        if(chooseBook() == true) {
+            return "Thank you! Enjoy the book.";
+        }
+
+        return "That book is not available.";
     }
 }

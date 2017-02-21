@@ -18,6 +18,7 @@ public class Menu {
                 System.out.println(libSystem.displayBooks());
                 break;
             case CHECKOUT_BOOK:
+                System.out.println(libSystem.checkoutBook());
                 break;
             case RETURN_BOOK:
                 break;
@@ -25,7 +26,7 @@ public class Menu {
     }
 
     public void loopMenu(User user, LibraryManagementSystem libSystem) {
-        Input userInput = new Input(user);
+        MenuOptionsInput userInput = new MenuOptionsInput(user);
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {

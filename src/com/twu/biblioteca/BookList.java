@@ -1,30 +1,47 @@
 package com.twu.biblioteca;
-import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 
 public class BookList {
-    private ArrayList<Book> list;
+    private Map<String, Book> books;
 
     public BookList() {
-        list = new ArrayList<Book>();
+        books = new HashMap<String, Book>();
     }
 
     public void populateBookList() {
-        list.add(new Book("Introduction to the Design & Analysis of Algorithm",
+        books.put("Introduction to the Design & Analysis of Algorithm",
+                new Book("Introduction to the Design & Analysis of Algorithm",
                 "Anany Levitin", 2012));
-        list.add(new Book("Gears of War: Anvil Gate",
+        books.put("Gears of War: Anvil Gate",
+                new Book("Gears of War: Anvil Gate",
                 "Karen Travis", 2010));
-        list.add(new Book("Artificial Intelligence: A Modern Approach",
+        books.put("Artificial Intelligence: A Modern Approach",
+                new Book("Artificial Intelligence: A Modern Approach",
                 "Peter Norvig", 2010));
-        list.add(new Book("Test-Driven Development",
+        books.put("Test-Driven Development",
+                new Book("Test-Driven Development",
                 "Kent Beck", 2003));
     }
 
     public int size() {
-        return list.size();
+        return books.size();
     }
 
-    public ArrayList<Book> getBooks() {
-        return list;
+    public Map<String, Book> getBooks() {
+        return books;
+    }
+
+    public Book getBookByTitle(String title) {
+        return books.get(title);
+    }
+
+    public void addBook(Book book) {
+        books.put(book.getTitle(), book);
+    }
+
+    public void removeBook(String title) {
+        books.remove(title);
     }
 
 }
