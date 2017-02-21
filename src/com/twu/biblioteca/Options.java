@@ -1,7 +1,7 @@
 package com.twu.biblioteca;
 
 public enum Options {
-    DISPLAY_BOOKS("Display Books"), CHECKOUT_BOOK("Checkout Book"),
+    LIST_BOOKS("List Books"), CHECKOUT_BOOK("Checkout Book"),
     RETURN_BOOK("Return Book"), QUIT("Quit");
 
     private String option;

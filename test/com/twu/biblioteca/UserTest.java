@@ -15,7 +15,7 @@ public class UserTest {
 
     @Test
     public void getUserOptionsShouldReturnListOfOptionsForUser() {
-        assertEquals("1) Display Books\n" +
+        assertEquals("1) List Books\n" +
                      "2) Checkout Book\n" +
                      "3) Return Book\n" +
                      "4) Quit\n", customer.getUserOptions());

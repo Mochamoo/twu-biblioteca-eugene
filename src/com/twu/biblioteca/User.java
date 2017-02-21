@@ -8,7 +8,7 @@ public class User {
     public User() {
         userOptions = new ArrayList<Options>();
 
-        userOptions.add(Options.DISPLAY_BOOKS);
+        userOptions.add(Options.LIST_BOOKS);
         userOptions.add(Options.CHECKOUT_BOOK);
         userOptions.add(Options.RETURN_BOOK);
         userOptions.add(Options.QUIT);
