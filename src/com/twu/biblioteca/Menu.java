@@ -14,12 +14,25 @@ public class Menu {
         return menuMessage;
     }
 
-    public void loopMenu(User user) {
+    public void performOption(Options option, LibraryManagementSystem libSystem) {
+        switch(option) {
+            case LIST_BOOKS:
+                System.out.println(libSystem.displayBooks());
+                break;
+            case CHECKOUT_BOOK:
+                break;
+            case RETURN_BOOK:
+                break;
+        }
+    }
+
+    public void loopMenu(User user, LibraryManagementSystem libSystem) {
         Input userInput = new Input(user);
-        Options selectedOption = userInput.getOption(this);
+        Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {
             selectedOption = userInput.getOption(this);
+            performOption(selectedOption, libSystem);
         }
     }
 }
