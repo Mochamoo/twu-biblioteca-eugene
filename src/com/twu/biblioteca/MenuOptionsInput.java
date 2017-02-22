@@ -7,6 +7,24 @@ public class MenuOptionsInput extends Input {
         this.user = user;
     }
 
+    public String validateAgainstOptions(String input) {
+        int userSelection;
+
+        try {
+            userSelection = Integer.parseInt(input);
+            if(userSelection <= 0 || userSelection > user.getNumOptions()) {
+                throw new NumberFormatException();
+            }
+
+        } catch(NumberFormatException nfe) {
+            return "Select a valid option!";
+        }
+
+        //Will be using this number to access array, so - 1
+        //is needed to get correct index in userOptions
+        return Integer.toString(userSelection - 1);
+    }
+
     public Options convertInputToOption(String input) {
         return user.getOption(Integer.parseInt(input));
     }
@@ -19,7 +37,7 @@ public class MenuOptionsInput extends Input {
                 System.out.println("Select a valid option!");
             }
             System.out.println(menu.displayMenu(user));
-            input = validateUserInput(getUserInput(), user.getNumOptions());
+            input = validateAgainstOptions(getInput());
         }
 
         return convertInputToOption(input);

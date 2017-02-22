@@ -30,7 +30,7 @@ public class LibraryManagementSystem {
 
     public boolean chooseBookToCheckout() {
         Input userInput = new Input();
-        String selectedOption = userInput.getUserInput();
+        String selectedOption = userInput.getInput();
         Book book;
 
         if((book = availableBooks.getBookByTitle(selectedOption)) != null) {
@@ -57,7 +57,7 @@ public class LibraryManagementSystem {
 
     public boolean chooseBookToReturn() {
         Input userInput = new Input();
-        String selectedOption = userInput.getUserInput();
+        String selectedOption = userInput.getInput();
         Book book;
 
         if((book = borrowedBooks.getBookByTitle(selectedOption)) != null) {
@@ -71,14 +71,14 @@ public class LibraryManagementSystem {
 
     public String returnBook() {
         if(borrowedBooks.size() == 0) {
-            return "There are currently no books being borrowed.";
+            return "There are currently no books being borrowed.\n";
         }
 
         System.out.println("Please type the name of the book (case/symbol sensitive):");
         if(chooseBookToReturn() == true) {
-            return "Thank you for returning the book.";
+            return "Thank you for returning the book.\n";
         }
 
-        return "That is not a valid book to return.";
+        return "That is not a valid book to return.\n";
     }
 }

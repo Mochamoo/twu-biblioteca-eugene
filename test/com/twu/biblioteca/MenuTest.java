@@ -31,13 +31,13 @@ public class MenuTest {
 
     /*@Test
     public void validateUserInputShouldReturnErrorMessageWhenEnteringChar() {
-        assertEquals("Enter a valid option!", menu.validateUserInput("x", customer));
+        assertEquals("Enter a valid option!", menu.validateAgainstOptions("x", customer));
     }
 
     @Test
     public void validateUserInputShouldReturnErrorMessageWhenEnteringNumOutOfRange() {
-        assertEquals("Enter a valid option!", menu.validateUserInput("0", customer));
-        assertEquals("Enter a valid option!", menu.validateUserInput("5", customer));
+        assertEquals("Enter a valid option!", menu.validateAgainstOptions("0", customer));
+        assertEquals("Enter a valid option!", menu.validateAgainstOptions("5", customer));
     }*/
 
 }
