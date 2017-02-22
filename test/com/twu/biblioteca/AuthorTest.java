@@ -14,13 +14,18 @@ public class AuthorTest {
     }
 
     @Test
-    public void getFNameShouldReturnAuthorFirstName() {
+    public void getFirstNameShouldReturnAuthorFirstName() {
         assertEquals("Bojack", author.getFirstName());
     }
 
     @Test
-    public void getLNameShouldReturnAuthorLastName() {
+    public void getLastNameShouldReturnAuthorLastName() {
         assertEquals("Horseman", author.getLastName());
+    }
+
+    @Test
+    public void getFullNameShouldReturnFirstNameAndLastNameWithSpaceInBetween() {
+        assertEquals("Bojack Horseman", author.getFullName());
     }
 
 }
