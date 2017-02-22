@@ -6,6 +6,7 @@ public class BibliotecaApp {
         LibraryManagementSystem libSystem = new LibraryManagementSystem();
         Menu menu = new Menu();
 
+        System.out.println(menu.welcome());
         menu.loopMenu(new User(), libSystem);
     }
 }

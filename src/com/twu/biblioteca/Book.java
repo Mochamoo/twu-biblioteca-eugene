@@ -2,12 +2,12 @@ package com.twu.biblioteca;
 
 public class Book {
     private String title;
-    private String author;
+    private AuthorList authors;
     private int yearPublished;
 
-    public Book(String title, String author, int yearPublished) {
+    public Book(String title, AuthorList authors, int yearPublished) {
         this.title = title;
-        this.author = author;
+        this.authors = authors;
         this.yearPublished = yearPublished;
     }
 
@@ -16,7 +16,7 @@ public class Book {
     }
 
     public String getAuthor() {
-        return author;
+        return authors.getAuthorNames();
     }
 
     public int getYearPublished() {
