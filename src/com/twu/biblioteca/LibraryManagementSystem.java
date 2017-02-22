@@ -10,17 +10,17 @@ public class LibraryManagementSystem {
         borrowedBooks = new BookList();
     }
 
-    private String displayHeader() {
+    private String generateHeader() {
         return "Title | Author | Year Published";
     }
 
     public String displayBooks() {
         StringBuilder headerAndListOfBooks = new StringBuilder();
-        headerAndListOfBooks.append(displayHeader() + "\n");
+        headerAndListOfBooks.append(generateHeader() + "\n");
 
         for(Book book : availableBooks.getBooks().values()) {
             headerAndListOfBooks.append(book.getTitle() + " | ");
-            headerAndListOfBooks.append(book.getAuthor() + " | ");
+            headerAndListOfBooks.append(book.getAuthorNames() + " | ");
             headerAndListOfBooks.append(book.getYearPublished());
             headerAndListOfBooks.append("\n");
         }

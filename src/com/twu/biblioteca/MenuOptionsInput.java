@@ -36,7 +36,7 @@ public class MenuOptionsInput extends Input {
             if(input == "Select a valid option!") {
                 System.out.println("Select a valid option!");
             }
-            System.out.println(menu.displayMenu(user));
+            System.out.println(menu.generateMenu(user));
             input = validateAgainstOptions(getInput());
         }
 

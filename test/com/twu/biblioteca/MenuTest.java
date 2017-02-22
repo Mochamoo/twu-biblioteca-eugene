@@ -16,28 +16,17 @@ public class MenuTest {
     }
 
     @Test
-    public void welcomeShouldPrintWelcomeMessage() {
-        assertEquals("===Welcome to Biblioteca!===", menu.welcome());
+    public void generateWelcomeShouldPrintWelcomeMessage() {
+        assertEquals("===Welcome to Biblioteca!===", menu.generateWelcome());
     }
 
     @Test
-    public void displayMenuShouldShowHeaderAndAllUsersOptions() {
+    public void generateMenuShouldShowHeaderAndAllUsersOptions() {
         assertEquals("Please make your selection (Enter one of the numbers below):\n" +
                      "1) List Books\n" +
                      "2) Checkout Book\n" +
                      "3) Return Book\n" +
-                     "4) Quit\n", menu.displayMenu(customer));
+                     "4) Quit\n", menu.generateMenu(customer));
     }
-
-    /*@Test
-    public void validateUserInputShouldReturnErrorMessageWhenEnteringChar() {
-        assertEquals("Enter a valid option!", menu.validateAgainstOptions("x", customer));
-    }
-
-    @Test
-    public void validateUserInputShouldReturnErrorMessageWhenEnteringNumOutOfRange() {
-        assertEquals("Enter a valid option!", menu.validateAgainstOptions("0", customer));
-        assertEquals("Enter a valid option!", menu.validateAgainstOptions("5", customer));
-    }*/
 
 }

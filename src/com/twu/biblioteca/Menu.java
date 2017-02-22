@@ -2,11 +2,11 @@ package com.twu.biblioteca;
 
 public class Menu {
 
-    public String welcome() {
+    public String generateWelcome() {
         return "===Welcome to Biblioteca!===";
     }
 
-    public String displayMenu(User user) {
+    public String generateMenu(User user) {
         String menuMessage = "Please make your selection (Enter one of the numbers below):\n";
         menuMessage += user.getUserOptions();
 

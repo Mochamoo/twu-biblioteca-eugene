@@ -15,7 +15,7 @@ public class Book {
         return title;
     }
 
-    public String getAuthor() {
+    public String getAuthorNames() {
         return authors.getAuthorNames();
     }
 

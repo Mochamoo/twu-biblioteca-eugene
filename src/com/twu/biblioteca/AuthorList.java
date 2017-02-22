@@ -1,6 +1,7 @@
 package com.twu.biblioteca;
 
 import java.util.ArrayList;
+import org.apache.commons.lang3.StringUtils;
 
 public class AuthorList {
     private ArrayList<Author> authorList;
@@ -22,17 +23,12 @@ public class AuthorList {
     }
 
     public String getAuthorNames() {
-        StringBuilder authorNames = new StringBuilder();
+        ArrayList<String> authorNames = new ArrayList<String>();
 
         for(Author author : authorList) {
-            authorNames.append(author.getFirstName());
-            authorNames.append(" ");
-            authorNames.append(author.getLastName());
-            authorNames.append(", ");
+            authorNames.add(author.getFullName());
         }
-        authorNames.deleteCharAt(authorNames.length() - 1);
-        authorNames.deleteCharAt(authorNames.length() - 1);
 
-        return authorNames.toString();
+        return StringUtils.join(authorNames, ", ");
     }
 }

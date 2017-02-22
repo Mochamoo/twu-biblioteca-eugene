@@ -20,8 +20,8 @@ public class BookTest {
     }
 
     @Test
-    public void getAuthorShouldReturnBooksAuthor() {
-        assertEquals("Kent Beck", book.getAuthor());
+    public void getAuthorNamesShouldReturnBooksAuthor() {
+        assertEquals("Kent Beck", book.getAuthorNames());
     }
 
     @Test
