@@ -25,9 +25,9 @@ public class AuthorList {
         StringBuilder authorNames = new StringBuilder();
 
         for(Author author : authorList) {
-            authorNames.append(author.getFname());
+            authorNames.append(author.getFirstName());
             authorNames.append(" ");
-            authorNames.append(author.getLname());
+            authorNames.append(author.getLastName());
             authorNames.append(", ");
         }
         authorNames.deleteCharAt(authorNames.length() - 1);

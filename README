@@ -33,14 +33,14 @@ main() is located in BibliotecaApp.java
 
 1) Open terminal and change directory to root of project folder
    Path should look similar to the following:
-   /IdeaProjects/TWU_Biblioteca-master
+   /twu_biblioteca-master
 2) Create a "classes" directory with the following command:
    $ mkdir classes
 
    Double check that our new "classes" directory is in the same
    directory as the "src" directory
 3) Change directory to "src"
-   Path should now be similar to: /IdeaProjects/TWU_Biblioteca-master/src
+   Path should now be similar to: /twu_biblioteca-master/src
 4) Enter the following command to compile to "classes" directory:
    $ javac -d ../classes com/twu/biblioteca/BibliotecaApp.java
 

@@ -1,19 +1,19 @@
 package com.twu.biblioteca;
 
 public class Author {
-    private String fname;
-    private String lname;
+    private String firstName;
+    private String lastName;
 
-    public Author(String fname, String lname) {
-        this.fname = fname;
-        this.lname = lname;
+    public Author(String firstName, String lastName) {
+        this.firstName = firstName;
+        this.lastName = lastName;
     }
 
-    public String getFname() {
-        return fname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public String getLname() {
-        return lname;
+    public String getLastName() {
+        return lastName;
     }
 }

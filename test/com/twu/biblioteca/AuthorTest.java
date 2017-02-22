@@ -15,12 +15,12 @@ public class AuthorTest {
 
     @Test
     public void getFNameShouldReturnAuthorFirstName() {
-        assertEquals("Bojack", author.getFname());
+        assertEquals("Bojack", author.getFirstName());
     }
 
     @Test
     public void getLNameShouldReturnAuthorLastName() {
-        assertEquals("Horseman", author.getLname());
+        assertEquals("Horseman", author.getLastName());
     }
 
 }
