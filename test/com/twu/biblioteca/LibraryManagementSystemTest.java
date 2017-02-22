@@ -64,21 +64,21 @@ public class LibraryManagementSystemTest {
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 
-        assertEquals("There are currently no books available.\n", libSystem.checkoutBook());
+        assertEquals("\nThere are currently no books available.\n", libSystem.checkoutBook());
     }
 
     @Test
     public void checkoutBookShouldDisplayThankYouMessageOnSuccessfulCheckout() {
         in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
-        assertEquals("Thank you! Enjoy the book.\n", libSystem.checkoutBook());
+        assertEquals("\nThank you! Enjoy the book.\n", libSystem.checkoutBook());
     }
 
     @Test
     public void checkoutBookShouldDisplayBookNotFoundMsgOnUnsuccessfulCheckout() {
         in = new ByteArrayInputStream("Non-existent book".getBytes());
         System.setIn(in);
-        assertEquals("That book is not available.\n", libSystem.checkoutBook());
+        assertEquals("\nThat book is not available.\n", libSystem.checkoutBook());
     }
 
     @Test
@@ -111,7 +111,7 @@ public class LibraryManagementSystemTest {
 
         in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
-        assertEquals("Thank you for returning the book.\n", libSystem.returnBook());
+        assertEquals("\nThank you for returning the book.\n", libSystem.returnBook());
     }
 
     @Test
@@ -122,12 +122,12 @@ public class LibraryManagementSystemTest {
 
         in = new ByteArrayInputStream("Goats of War: Manvil Grate".getBytes());
         System.setIn(in);
-        assertEquals("That is not a valid book to return.\n", libSystem.returnBook());
+        assertEquals("\nThat is not a valid book to return.\n", libSystem.returnBook());
     }
 
     @Test
     public void returnBookShouldDeclareNoBooksToReturnIfNoneAreBorrowed() {
-        assertEquals("There are currently no books being borrowed.\n", libSystem.returnBook());
+        assertEquals("\nThere are currently no books being borrowed.\n", libSystem.returnBook());
     }
 
 }
