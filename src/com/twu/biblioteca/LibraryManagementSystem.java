@@ -44,15 +44,15 @@ public class LibraryManagementSystem {
 
     public String checkoutBook() {
         if(availableBooks.size() == 0) {
-            return "There are currently no books available.\n";
+            return "\nThere are currently no books available.\n";
         }
 
         System.out.println("Please type the name of the book (case/symbol sensitive):");
         if(chooseBookToCheckout() == true) {
-            return "Thank you! Enjoy the book.\n";
+            return "\nThank you! Enjoy the book.\n";
         }
 
-        return "That book is not available.\n";
+        return "\nThat book is not available.\n";
     }
 
     public boolean chooseBookToReturn() {
@@ -71,14 +71,14 @@ public class LibraryManagementSystem {
 
     public String returnBook() {
         if(borrowedBooks.size() == 0) {
-            return "There are currently no books being borrowed.\n";
+            return "\nThere are currently no books being borrowed.\n";
         }
 
         System.out.println("Please type the name of the book (case/symbol sensitive):");
         if(chooseBookToReturn() == true) {
-            return "Thank you for returning the book.\n";
+            return "\nThank you for returning the book.\n";
         }
 
-        return "That is not a valid book to return.\n";
+        return "\nThat is not a valid book to return.\n";
     }
 }
