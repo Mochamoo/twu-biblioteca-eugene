@@ -6,12 +6,11 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MenuOptionsInputTest {
-    MenuOptionsInput input;
-    User user;
+    private MenuOptionsInput input;
 
     @Before
     public void setUp() throws Exception {
-        user = new User();
+        User user = new User();
         input = new MenuOptionsInput(user);
     }
 

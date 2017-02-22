@@ -10,7 +10,8 @@ public class BookTest {
 
     @Before
     public void setUp() {
-        book = new Book("Test-Driven Development", "Kent Beck", 2003);
+        book = new Book("Test-Driven Development",
+               new AuthorList(new Author("Kent", "Beck")), 2003);
     }
 
     @Test

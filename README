@@ -27,3 +27,34 @@ Instructions to open your code in Intellij
 2. Select the directory containing the code
 DONE !
 
+Instructions to compile in Linux
+================================
+main() is located in BibliotecaApp.java
+
+1) Open terminal and change directory to root of project folder
+   Path should look similar to the following:
+   /IdeaProjects/TWU_Biblioteca-master
+2) Create a "classes" directory with the following command:
+   mkdir classes
+
+   Double check that our new "classes" directory is in the same
+   directory as the "src" directory
+3) Change directory to "src"
+   Path should now be similar to: /IdeaProjects/TWU_Biblioteca-master/src
+4) Enter the following command to compile to "classes" directory:
+   javac -d ../classes com/twu/biblioteca/BibliotecaApp.java
+
+   "classes" directory should now contain the .class files
+
+Instructions to run in Linux
+============================
+1) Change to the "classes". The "com" directory should be the only
+   item in there
+2) Run the program with the following command:
+   java com.twu.biblioteca.Biblioteca
+
+   The program should now start, and its menu displayed.
+   The numbers on the side of each option represent the input needed
+   in order to perform the action of that option. For instance, "4" is
+   listed alongside the "Quit" option, so entering "4" should quit the
+   program

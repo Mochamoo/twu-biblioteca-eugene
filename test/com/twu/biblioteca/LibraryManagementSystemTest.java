@@ -10,7 +10,7 @@ import static org.junit.Assert.assertEquals;
 
 public class LibraryManagementSystemTest {
     private LibraryManagementSystem libSystem;
-    ByteArrayInputStream in;
+    private ByteArrayInputStream in;
 
     @Before
     public void setup() {
@@ -34,21 +34,21 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void chooseBookToCheckoutShouldReturnTrueIfBookExists() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         assertEquals(true, libSystem.chooseBookToCheckout());
     }
 
     @Test
     public void chooseBookToCheckoutShouldReturnFalseIfBookDoesNotExist() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Non-existent book".getBytes());
+        in = new ByteArrayInputStream("Non-existent book".getBytes());
         System.setIn(in);
         assertEquals(false, libSystem.chooseBookToCheckout());
     }
 
     @Test
     public void checkoutBookShouldDisplayThereAreNoBooksIfAllBooksAreBorrowed() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 
@@ -69,21 +69,21 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void checkoutBookShouldDisplayThankYouMessageOnSuccessfulCheckout() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         assertEquals("Thank you! Enjoy the book.\n", libSystem.checkoutBook());
     }
 
     @Test
     public void checkoutBookShouldDisplayBookNotFoundMsgOnUnsuccessfulCheckout() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Non-existent book".getBytes());
+        in = new ByteArrayInputStream("Non-existent book".getBytes());
         System.setIn(in);
         assertEquals("That book is not available.\n", libSystem.checkoutBook());
     }
 
     @Test
     public void chooseBookToReturnShouldReturnTrueIfBookExists() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 
@@ -94,7 +94,7 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void chooseBookToReturnShouldReturnFalseIfBookDoesNotExists() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 
@@ -105,7 +105,7 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void returnBookShouldDisplayThankYouMsgOnSuccessfulReturn() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 
@@ -116,7 +116,7 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void returnBookShouldDisplayBookNotValidOnUnsuccessfulReturn() {
-        ByteArrayInputStream in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
+        in = new ByteArrayInputStream("Gears of War: Anvil Gate".getBytes());
         System.setIn(in);
         libSystem.chooseBookToCheckout();
 

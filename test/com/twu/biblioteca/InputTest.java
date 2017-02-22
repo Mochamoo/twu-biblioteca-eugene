@@ -9,8 +9,7 @@ import java.io.ByteArrayInputStream;
 import static org.junit.Assert.assertEquals;
 
 public class InputTest {
-    Input input;
-    ByteArrayInputStream in;
+    private Input input;
 
     @Before
     public void setUp() throws Exception {
@@ -24,15 +23,10 @@ public class InputTest {
 
     @Test
     public void getUserInputShouldReturnWhatUserEnters() throws Exception {
-        in = new ByteArrayInputStream("The day is hot.".getBytes());
+        ByteArrayInputStream in = new ByteArrayInputStream("The day is hot.".getBytes());
         System.setIn(in);
 
         assertEquals("The day is hot.", input.getInput());
-    }
-
-    @Test
-    public void validateUserInput() throws Exception {
-
     }
 
 }
