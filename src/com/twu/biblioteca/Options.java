@@ -10,7 +10,7 @@ public enum Options {
         this.option = option;
     }
 
-    public String getOption() {
+    public String getOptionString() {
         return option;
     }
 

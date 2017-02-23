@@ -3,6 +3,7 @@ package com.twu.biblioteca;
 public class BibliotecaApp {
 
     public static void main(String[] args) {
+
         LibraryManagementSystem libSystem = new LibraryManagementSystem();
         libSystem.addBook(new Book("Test-Driven Development",
                 new AuthorList(new Author("Kent", "Beck")),
@@ -20,6 +21,6 @@ public class BibliotecaApp {
         Menu menu = new Menu();
 
         System.out.println(menu.generateWelcome());
-        menu.loopMenu(new User(), libSystem);
+        menu.loopMenu(new User("Bojack", "Horseman"), libSystem);
     }
 }

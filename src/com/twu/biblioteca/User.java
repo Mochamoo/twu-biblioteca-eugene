@@ -3,9 +3,14 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class User {
-    protected ArrayList<Options> userOptions;
+    private String username;
+    private String hash;
+    private ArrayList<Options> userOptions;
 
-    public User() {
+    public User(String username, String password) {
+        this.username = username;
+        this.hash = password;
+
         userOptions = new ArrayList<Options>();
 
         userOptions.add(Options.LIST_BOOKS);
@@ -19,9 +24,8 @@ public class User {
         int i = 1;
 
         for(Options option : userOptions) {
-            availableOptionsToUser.append(i + ") ");
-            availableOptionsToUser.append(option.getOption());
-            availableOptionsToUser.append("\n");
+            availableOptionsToUser.append(
+                    String.format("%d) %s\n", i, option.getOptionString()));
 
             ++i;
         }
@@ -35,5 +39,13 @@ public class User {
 
     public Options getOption(int index) {
         return userOptions.get(index);
+    }
+
+    public String getUsername() {
+        return username;
+    }
+
+    public String getHash() {
+        return hash;
     }
 }

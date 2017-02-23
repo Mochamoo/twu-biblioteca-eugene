@@ -68,4 +68,10 @@ public class LibraryManagementSystemTest {
                 libSystem.returnBook("Goats of War: Manvil Grate"));
     }
 
+    @Test
+    public void addUserShouldIncrementUserListSizeByOneOnSuccessfulAdd() {
+        libSystem.addUser(new User("000-0001", "64 digit hash"));
+
+        assertEquals(1, libSystem.getNumberOfUsers());
+    }
 }

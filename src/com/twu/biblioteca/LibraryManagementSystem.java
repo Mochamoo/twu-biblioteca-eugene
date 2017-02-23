@@ -3,10 +3,12 @@ package com.twu.biblioteca;
 public class LibraryManagementSystem {
     private BookList availableBooks;
     private BookList borrowedBooks;
+    private UserList users;
 
     public LibraryManagementSystem() {
         availableBooks = new BookList();
         borrowedBooks = new BookList();
+        users = new UserList();
     }
 
     public void addBook(Book book) {
@@ -23,10 +25,10 @@ public class LibraryManagementSystem {
         headerAndListOfBooks.append("\n");
 
         for(Book book : availableBooks.getBooks().values()) {
-            headerAndListOfBooks.append(book.getTitle() + " | ");
-            headerAndListOfBooks.append(book.getAuthorNames() + " | ");
-            headerAndListOfBooks.append(book.getYearPublished());
-            headerAndListOfBooks.append("\n");
+            headerAndListOfBooks.append(String.format("%s | %s | %d\n",
+                    book.getTitle(),
+                    book.getAuthorNames(),
+                    book.getYearPublished()));
         }
 
         return headerAndListOfBooks.toString();
@@ -63,4 +65,17 @@ public class LibraryManagementSystem {
     public int getNumberOfBorrowedBooks() {
         return borrowedBooks.size();
     }
+
+    public void addUser(User user) {
+        users.addUser(user);
+    }
+
+    public int getNumberOfUsers() {
+        return users.size();
+    }
+
+    public boolean isValidUser(String username, String hash) {
+        return users.isValidUser(username, hash);
+    }
+
 }

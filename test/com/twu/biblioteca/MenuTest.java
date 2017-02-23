@@ -18,7 +18,7 @@ public class MenuTest {
     public void setUp() {
         libSystem = new LibraryManagementSystem();
         menu = new Menu();
-        customer = new User();
+        customer = new User("Bojack", "Horseman");
 
         libSystem.addBook(new Book("Test-Driven Development",
                 new AuthorList(new Author("Kent", "Beck")),

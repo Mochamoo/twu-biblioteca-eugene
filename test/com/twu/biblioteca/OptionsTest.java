@@ -7,9 +7,9 @@ import static org.junit.Assert.assertEquals;
 public class OptionsTest {
 
     @Test
-    public void getOptionShouldReturnOptionInString() {
+    public void getOptionStringShouldReturnOptionInString() {
         Options quitOption = Options.QUIT;
 
-        assertEquals("Quit", quitOption.getOption());
+        assertEquals("Quit", quitOption.getOptionString());
     }
 }

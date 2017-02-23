@@ -10,7 +10,7 @@ public class MenuOptionsInputTest {
 
     @Before
     public void setUp() throws Exception {
-        User user = new User();
+        User user = new User("Bojack", "Horseman");
         input = new MenuOptionsInput(user);
     }
 
