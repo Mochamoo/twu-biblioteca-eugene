@@ -18,6 +18,10 @@ public class AuthorList {
         }
     }
 
+    public AuthorList(ArrayList<Author> authorList) {
+        this.authorList = authorList;
+    }
+
     public void addNewAuthor(Author author) {
         authorList.add(author);
     }
@@ -30,5 +34,9 @@ public class AuthorList {
         }
 
         return StringUtils.join(authorNames, ", ");
+    }
+
+    public int getNumberOfAuthors() {
+        return authorList.size();
     }
 }

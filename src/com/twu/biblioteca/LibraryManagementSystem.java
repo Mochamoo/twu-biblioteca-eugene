@@ -6,8 +6,11 @@ public class LibraryManagementSystem {
 
     public LibraryManagementSystem() {
         availableBooks = new BookList();
-        availableBooks.populateBookList();
         borrowedBooks = new BookList();
+    }
+
+    public void addBook(Book book) {
+        availableBooks.addBook(book);
     }
 
     private String generateHeader() {
@@ -16,7 +19,8 @@ public class LibraryManagementSystem {
 
     public String displayBooks() {
         StringBuilder headerAndListOfBooks = new StringBuilder();
-        headerAndListOfBooks.append(generateHeader() + "\n");
+        headerAndListOfBooks.append(generateHeader());
+        headerAndListOfBooks.append("\n");
 
         for(Book book : availableBooks.getBooks().values()) {
             headerAndListOfBooks.append(book.getTitle() + " | ");
@@ -80,5 +84,9 @@ public class LibraryManagementSystem {
         }
 
         return "\nThat is not a valid book to return.\n";
+    }
+
+    public int getNumberOfAvailableBooks() {
+        return availableBooks.size();
     }
 }
