@@ -17,7 +17,7 @@ public class LibraryManagementSystem {
         return "Title | Author | Year Published";
     }
 
-    public String displayBooks() {
+    public String generateBooksDisplay() {
         StringBuilder headerAndListOfBooks = new StringBuilder();
         headerAndListOfBooks.append(generateHeader());
         headerAndListOfBooks.append("\n");

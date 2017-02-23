@@ -1,6 +1,5 @@
 package com.twu.biblioteca;
 
-import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -32,13 +31,13 @@ public class LibraryManagementSystemTest {
     }
 
     @Test
-    public void displayBookListShouldShowAllTitlesAuthorsAndPublishYear() {
+    public void generateBooksDisplayShouldShowAllTitlesAuthorsAndPublishYear() {
         assertEquals("Title | Author | Year Published\n" +
                      "Test-Driven Development | Kent Beck | 2003\n" +
                      "Gears of War: Anvil Gate | Karen Travis | 2010\n" +
                      "Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
                      "Introduction to the Design & Analysis of Algorithm | Anany Levitin | 2012\n",
-                     libSystem.displayBooks());
+                     libSystem.generateBooksDisplay());
     }
 
     @Test

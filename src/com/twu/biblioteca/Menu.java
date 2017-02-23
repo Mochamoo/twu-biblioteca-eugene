@@ -42,7 +42,7 @@ public class Menu {
 
         switch(option) {
             case LIST_BOOKS:
-                System.out.println(libSystem.displayBooks());
+                System.out.println(libSystem.generateBooksDisplay());
                 break;
             case CHECKOUT_BOOK:
                 System.out.println(checkoutBook(libSystem));
