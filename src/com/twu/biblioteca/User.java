@@ -16,6 +16,10 @@ public class User {
         userOptions.add(Options.LIST_BOOKS);
         userOptions.add(Options.CHECKOUT_BOOK);
         userOptions.add(Options.RETURN_BOOK);
+        userOptions.add(Options.LIST_MOVIES);
+        userOptions.add(Options.CHECKOUT_MOVIE);
+        userOptions.add(Options.RETURN_MOVIE);
+        userOptions.add(Options.VIEW_USER_INFO);
         userOptions.add(Options.QUIT);
     }
 

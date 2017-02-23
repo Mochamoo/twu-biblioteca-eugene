@@ -22,7 +22,7 @@ public class MenuOptionsInputTest {
     @Test
     public void validateAgainstOptionsShouldReturnFailMsgOnOutOfBoundsInteger() {
         assertEquals("Select a valid option!", input.validateAgainstOptions("0"));
-        assertEquals("Select a valid option!", input.validateAgainstOptions("5"));
+        assertEquals("Select a valid option!", input.validateAgainstOptions("9"));
     }
 
     @Test
@@ -32,7 +32,7 @@ public class MenuOptionsInputTest {
 
     @Test
     public void convertInputToOptionShouldReturnOptionEnumOnValidInput() {
-        assertEquals(Options.QUIT, input.convertInputToOption("3"));
+        assertEquals(Options.QUIT, input.convertInputToOption("7"));
     }
 
 }

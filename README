@@ -58,3 +58,12 @@ Instructions to run in Linux
    in order to perform the action of that option. For instance, "4" is
    listed alongside the "Quit" option, so entering "4" should quit the
    program
+
+Logging in
+==========
+At current, user accounts are hard coded. If you would like to test
+program functionality, you may log in with the following username and
+password:
+Username: 0000001
+Password: 64 digit hash
+

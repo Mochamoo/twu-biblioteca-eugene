@@ -18,7 +18,11 @@ public class UserTest {
         assertEquals("1) List Books\n" +
                      "2) Checkout Book\n" +
                      "3) Return Book\n" +
-                     "4) Quit\n", customer.getUserOptions());
+                     "4) List Movies\n" +
+                     "5) Checkout Movie\n" +
+                     "6) Return Movie\n" +
+                     "7) View User Info\n" +
+                     "8) Quit\n", customer.getUserOptions());
     }
 
 }
