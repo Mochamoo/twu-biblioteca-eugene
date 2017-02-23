@@ -23,17 +23,6 @@ public class AuthorListTest {
     }
 
     @Test
-    public void authorListConstructorShouldAcceptArrayListOfAuthors() {
-        ArrayList<Author> authorList = new ArrayList<Author>();
-        authorList.add(new Author("Bojack", "Horseman"));
-        authorList.add(new Author("Margo", "Martindale"));
-
-        authors = new AuthorList(authorList);
-
-        assertEquals(2, authors.getNumberOfAuthors());
-    }
-
-    @Test
     public void getAuthorNamesShouldReturnFormattedStringOfAuthors() {
         authors.addNewAuthor(new Author("Diane", "Nguyen"));
         authors.addNewAuthor(new Author("Mister", "Peanutbutter"));

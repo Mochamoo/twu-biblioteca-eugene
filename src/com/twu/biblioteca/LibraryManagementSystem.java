@@ -32,54 +32,24 @@ public class LibraryManagementSystem {
         return headerAndListOfBooks.toString();
     }
 
-    public boolean chooseBookToCheckout() {
-        Input userInput = new Input();
-        String selectedOption = userInput.getInput();
+    public String checkoutBook(String bookTitle) {
         Book book;
 
-        if((book = availableBooks.getBookByTitle(selectedOption)) != null) {
+        if((book = availableBooks.getBookByTitle(bookTitle)) != null) {
             borrowedBooks.addBook(book);
             availableBooks.removeBook(book.getTitle());
-            return true;
-        }
-
-        return false;
-    }
-
-    public String checkoutBook() {
-        if(availableBooks.size() == 0) {
-            return "\nThere are currently no books available.\n";
-        }
-
-        System.out.println("Please type the name of the book (case/symbol sensitive):");
-        if(chooseBookToCheckout() == true) {
             return "\nThank you! Enjoy the book.\n";
         }
 
         return "\nThat book is not available.\n";
     }
 
-    public boolean chooseBookToReturn() {
-        Input userInput = new Input();
-        String selectedOption = userInput.getInput();
+    public String returnBook(String bookTitle) {
         Book book;
 
-        if((book = borrowedBooks.getBookByTitle(selectedOption)) != null) {
+        if((book = borrowedBooks.getBookByTitle(bookTitle)) != null) {
             availableBooks.addBook(book);
             borrowedBooks.removeBook(book.getTitle());
-            return true;
-        }
-
-        return false;
-    }
-
-    public String returnBook() {
-        if(borrowedBooks.size() == 0) {
-            return "\nThere are currently no books being borrowed.\n";
-        }
-
-        System.out.println("Please type the name of the book (case/symbol sensitive):");
-        if(chooseBookToReturn() == true) {
             return "\nThank you for returning the book.\n";
         }
 
@@ -88,5 +58,9 @@ public class LibraryManagementSystem {
 
     public int getNumberOfAvailableBooks() {
         return availableBooks.size();
+    }
+
+    public int getNumberOfBorrowedBooks() {
+        return borrowedBooks.size();
     }
 }

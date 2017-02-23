@@ -13,16 +13,42 @@ public class Menu {
         return menuMessage;
     }
 
+    public String checkoutBook(LibraryManagementSystem libSystem) {
+        if(libSystem.getNumberOfAvailableBooks() == 0) {
+            return "\nThere are currently no books available.\n";
+        }
+
+        Input input = new Input();
+
+        System.out.println("Please type the name of the book (case/symbol sensitive):");
+
+        return libSystem.checkoutBook(input.getInput());
+    }
+
+    public String returnBook(LibraryManagementSystem libSystem) {
+        if(libSystem.getNumberOfBorrowedBooks() == 0) {
+            return "\nThere are currently no books being borrowed.\n";
+        }
+
+        Input input = new Input();
+
+        System.out.println("Please type the name of the book (case/symbol sensitive):");
+
+        return libSystem.returnBook(input.getInput());
+    }
+
     public void performOption(Options option, LibraryManagementSystem libSystem) {
+        Input input = new Input();
+
         switch(option) {
             case LIST_BOOKS:
                 System.out.println(libSystem.displayBooks());
                 break;
             case CHECKOUT_BOOK:
-                System.out.println(libSystem.checkoutBook());
+                System.out.println(checkoutBook(libSystem));
                 break;
             case RETURN_BOOK:
-                System.out.println(libSystem.returnBook());
+                System.out.println(returnBook(libSystem));
                 break;
         }
     }
