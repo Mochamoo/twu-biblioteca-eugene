@@ -38,8 +38,6 @@ public class Menu {
     }
 
     public void performOption(Options option, LibraryManagementSystem libSystem) {
-        Input input = new Input();
-
         switch(option) {
             case LIST_BOOKS:
                 System.out.println(libSystem.generateBooksDisplay());
