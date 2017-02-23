@@ -3,12 +3,14 @@ package com.twu.biblioteca;
 public class LibraryManagementSystem {
     private BookList availableBooks;
     private BookList borrowedBooks;
+    private User currentUser;
     private UserList users;
 
     public LibraryManagementSystem() {
         availableBooks = new BookList();
         borrowedBooks = new BookList();
         users = new UserList();
+        currentUser = null;
     }
 
     public void addBook(Book book) {
@@ -74,8 +76,21 @@ public class LibraryManagementSystem {
         return users.size();
     }
 
+    public void setCurrentUser(User user) {
+        currentUser = user;
+    }
+
+    public User getCurrentUser() {
+        return currentUser;
+    }
+
     public boolean isValidUser(String username, String hash) {
-        return users.isValidUser(username, hash);
+        if(users.isValidUser(username, hash)) {
+            setCurrentUser(users.getUserByUsername(username));
+            return true;
+        }
+
+        return false;
     }
 
 }

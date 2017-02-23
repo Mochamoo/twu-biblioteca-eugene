@@ -51,8 +51,8 @@ public class Menu {
         }
     }
 
-    public void loopMenu(User user, LibraryManagementSystem libSystem) {
-        MenuOptionsInput userInput = new MenuOptionsInput(user);
+    public void loopMenu(LibraryManagementSystem libSystem) {
+        MenuOptionsInput userInput = new MenuOptionsInput(libSystem.getCurrentUser());
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {

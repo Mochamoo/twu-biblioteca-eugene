@@ -32,7 +32,7 @@ public class LoginHandler {
         String username = input.getInput();
         if((username = input.getFormattedUsername(username)) == null) {
             System.out.println("Username entered is not in correct format.");
-            return null;
+            return "";
         }
 
         return username;

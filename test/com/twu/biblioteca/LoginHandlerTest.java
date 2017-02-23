@@ -37,6 +37,14 @@ public class LoginHandlerTest {
     }
 
     @Test
+    public void requestUsernameShouldReturnEmptyStringOnIncorrectFormatting() {
+        in = new ByteArrayInputStream("123567".getBytes());
+        System.setIn(in);
+
+        assertEquals("", loginHandler.requestUsername());
+    }
+
+    @Test
     public void requestPasswordShouldReturnEnteredPassword() {
         in = new ByteArrayInputStream("Amanda".getBytes());
         System.setIn(in);
