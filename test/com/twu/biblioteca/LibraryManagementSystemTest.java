@@ -70,7 +70,9 @@ public class LibraryManagementSystemTest {
 
     @Test
     public void addUserShouldIncrementUserListSizeByOneOnSuccessfulAdd() {
-        libSystem.addUser(new User("000-0001", "64 digit hash"));
+        libSystem.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "000-0001",
+                "64 digit hash"));
 
         assertEquals(1, libSystem.getNumberOfUsers());
     }

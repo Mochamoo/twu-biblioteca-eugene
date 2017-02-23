@@ -4,7 +4,8 @@ public class BibliotecaApp {
 
     public static void main(String[] args) {
         LibraryManagementSystem libSystem = new LibraryManagementSystem();
-        libSystem.addUser(new User("000-0001",
+        libSystem.addUser(new User(new Name("Bojack", "Horseman"),
+                        "micro@Gmail.com", "04112628", "000-0001",
                 LoginHandler.hashPassword("64 digit hash")));
 
         Menu menu = new Menu();

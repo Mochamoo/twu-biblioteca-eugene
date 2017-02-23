@@ -3,11 +3,18 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class User {
+    private Name name;
+    private String email;
+    private String phoneNumber;
     private String username;
     private String hash;
     private ArrayList<Options> userOptions;
 
-    public User(String username, String password) {
+    public User(Name name, String email, String phoneNumber,
+                String username, String password) {
+        this.name = name;
+        this.email = email;
+        this.phoneNumber = phoneNumber;
         this.username = username;
         this.hash = password;
 
@@ -51,5 +58,17 @@ public class User {
 
     public String getHash() {
         return hash;
+    }
+
+    public String getFirstName() {
+        return name.getFirstName();
+    }
+
+    public String getLastName() {
+        return name.getLastName();
+    }
+
+    public String getFullName() {
+        return name.getFullName();
     }
 }

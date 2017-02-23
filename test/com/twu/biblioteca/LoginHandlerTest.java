@@ -56,7 +56,9 @@ public class LoginHandlerTest {
     public void validateLoginDetailsShouldReturnTrueOnSuccessfulLogin() {
         LibraryManagementSystem libSystem = new LibraryManagementSystem();
         String hash = "fe0c55384313c0194d318c5eb17a864a19a56873d7427c4671976d70f7d4a2c5";
-        libSystem.addUser(new User("123-4567", hash));
+        libSystem.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "123-4567",
+                hash));
 
         in = new ByteArrayInputStream("1234567".getBytes());
         System.setIn(in);

@@ -15,21 +15,27 @@ public class UserListTest {
 
     @Test
     public void addUserShouldAddAnExtraUserToUserList() {
-        users.addUser(new User("123-4567", "Horse"));
+        users.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "000-0001",
+                "64 digit hash"));
 
         assertEquals(1, users.size());
     }
 
     @Test
     public void getUserByNameShouldReturnUserWithMatchingUsername() {
-        users.addUser(new User("000-0001", "64 digit hash"));
+        users.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "000-0001",
+                "64 digit hash"));
 
         assertEquals("64 digit hash", users.getUserByUsername("000-0001").getHash());
     }
 
     @Test
     public void isValidUserShouldReturnTrueForUserWithMatchingUsernameAndHash() {
-        users.addUser(new User("000-0001", "64 digit hash"));
+        users.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "000-0001",
+                "64 digit hash"));
 
         assertEquals(true, users.isValidUser("000-0001", "64 digit hash"));
     }

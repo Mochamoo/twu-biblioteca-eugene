@@ -10,7 +10,8 @@ public class MenuOptionsInputTest {
 
     @Before
     public void setUp() throws Exception {
-        User user = new User("Bojack", "Horseman");
+        User user = new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "123-4567", "64 digit hash");
         input = new MenuOptionsInput(user);
     }
 

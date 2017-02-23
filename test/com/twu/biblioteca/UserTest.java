@@ -10,7 +10,9 @@ public class UserTest {
 
     @Before
     public void setUp() {
-        customer = new User("Bojack", "Horseman");
+        customer = new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "000-0001",
+                "64 digit hash");
     }
 
     @Test
