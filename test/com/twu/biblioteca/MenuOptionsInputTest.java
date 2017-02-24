@@ -16,14 +16,14 @@ public class MenuOptionsInputTest {
     }
 
     @Test
-    public void validateAgainstOptionsShouldReturnFailMsgOnNonInteger() {
-        assertEquals("Select a valid option!", input.validateAgainstOptions("..."));
+    public void validateAgainstOptionsShouldReturnNullOnNonInteger() {
+        assertEquals(null, input.validateAgainstOptions("..."));
     }
 
     @Test
-    public void validateAgainstOptionsShouldReturnFailMsgOnOutOfBoundsInteger() {
-        assertEquals("Select a valid option!", input.validateAgainstOptions("0"));
-        assertEquals("Select a valid option!", input.validateAgainstOptions("9"));
+    public void validateAgainstOptionsShouldReturnNullOnOutOfBoundsInteger() {
+        assertEquals(null, input.validateAgainstOptions("0"));
+        assertEquals(null, input.validateAgainstOptions("9"));
     }
 
     @Test
