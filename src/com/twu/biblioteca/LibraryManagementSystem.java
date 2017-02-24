@@ -3,19 +3,15 @@ package com.twu.biblioteca;
 import java.util.ArrayList;
 
 public class LibraryManagementSystem {
-    private BookList availableBooks;
-    private BookList borrowedBooks;
-    private MovieList availableMovies;
-    private MovieList borrowedMovies;
+    BooksManager booksManager;
+    MoviesManager moviesManager;
     private User currentUser;
     private ArrayList<Options> userOptions;
     private UserList users;
 
     public LibraryManagementSystem() {
-        availableBooks = new BookList();
-        borrowedBooks = new BookList();
-        availableMovies = new MovieList();
-        borrowedMovies = new MovieList();
+        booksManager = new BooksManager();
+        moviesManager = new MoviesManager();
         users = new UserList();
         currentUser = null;
 
@@ -31,58 +27,51 @@ public class LibraryManagementSystem {
     }
 
     public void addBook(Book book) {
-        availableBooks.addBook(book);
-    }
-
-    private String generateBookHeader() {
-        return "Title | Author | Year Published";
+        booksManager.addBook(book);
     }
 
     public String generateBooksDisplay() {
-        StringBuilder headerAndListOfBooks = new StringBuilder();
-        headerAndListOfBooks.append(generateBookHeader());
-        headerAndListOfBooks.append("\n");
-
-        for(Book book : availableBooks.getBooks().values()) {
-            headerAndListOfBooks.append(String.format("%s | %s | %d\n",
-                    book.getTitle(),
-                    book.getAuthorNames(),
-                    book.getYearPublished()));
-        }
-
-        return headerAndListOfBooks.toString();
+        return booksManager.generateBooksDisplay();
     }
 
     public boolean checkoutBook(String bookTitle) {
-        Book book;
-
-        if((book = availableBooks.getBookByTitle(bookTitle)) != null) {
-            borrowedBooks.addBook(book);
-            availableBooks.removeBook(book.getTitle());
-            return true;
-        }
-
-        return false;
+        return booksManager.checkoutBook(bookTitle);
     }
 
     public boolean returnBook(String bookTitle) {
-        Book book;
-
-        if((book = borrowedBooks.getBookByTitle(bookTitle)) != null) {
-            availableBooks.addBook(book);
-            borrowedBooks.removeBook(book.getTitle());
-            return true;
-        }
-
-        return false;
+        return booksManager.returnBook(bookTitle);
     }
 
     public int getNumberOfAvailableBooks() {
-        return availableBooks.size();
+        return booksManager.getNumberOfAvailableBooks();
     }
 
     public int getNumberOfBorrowedBooks() {
-        return borrowedBooks.size();
+        return booksManager.getNumberOfBorrowedBooks();
+    }
+
+    public String generateMoviesDisplay() {
+        return moviesManager.generateMoviesDisplay();
+    }
+
+    public int getNumberOfAvailableMovies() {
+        return moviesManager.getNumberOfAvailableMovies();
+    }
+
+    public int getNumberOfBorrowedMovies() {
+        return moviesManager.getNumberOfBorrowedMovies();
+    }
+
+    public void addMovie(Movie movie) {
+        moviesManager.addMovie(movie);
+    }
+
+    public boolean checkoutMovie(String movieTitle) {
+        return moviesManager.checkoutMovie(movieTitle);
+    }
+
+    public boolean returnMovie(String movieTitle) {
+        return moviesManager.returnMovie(movieTitle);
     }
 
     public void addUser(User user) {
@@ -136,59 +125,4 @@ public class LibraryManagementSystem {
         return userOptions.get(index);
     }
 
-    private String generateMovieHeader() {
-        return "Name | Year | Director | Rating";
-    }
-
-    public String generateMoviesDisplay() {
-        StringBuilder headerAndListOfMovies = new StringBuilder();
-        headerAndListOfMovies.append(generateMovieHeader());
-        headerAndListOfMovies.append("\n");
-
-        for(Movie movie : availableMovies.getMovies().values()) {
-            headerAndListOfMovies.append(String.format("%s | %d | %s | %s\n",
-                    movie.getTitle(),
-                    movie.getYearReleased(),
-                    movie.getDirectorName(),
-                    movie.getRatingInString()));
-        }
-
-        return headerAndListOfMovies.toString();
-    }
-
-    public int getNumberOfAvailableMovies() {
-        return availableMovies.size();
-    }
-
-    public void addMovie(Movie movie) {
-        availableMovies.addMovie(movie);
-    }
-
-    public boolean checkoutMovie(String movieTitle) {
-        Movie movie;
-
-        if((movie = availableMovies.getMovieByTitle(movieTitle)) != null) {
-            borrowedMovies.addMovie(movie);
-            availableMovies.removeMovie(movie.getTitle());
-            return true;
-        }
-
-        return false;
-    }
-
-    public boolean returnMovie(String movieTitle) {
-        Movie movie;
-
-        if((movie = borrowedMovies.getMovieByTitle(movieTitle)) != null) {
-            borrowedMovies.removeMovie(movie.getTitle());
-            availableMovies.addMovie(movie);
-            return true;
-        }
-
-        return false;
-    }
-
-    public int getNumberOfBorrowedMovies() {
-        return borrowedMovies.size();
-    }
 }
