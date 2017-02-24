@@ -121,7 +121,6 @@ public class Menu {
         while(selectedOption != Options.QUIT) {
             System.out.println(generateMenu(libSystem));
             selectedOption = getOptionFromUser(libSystem);
-            //selectedOption = userInput.getOption(this);
             performOption(selectedOption, libSystem);
         }
     }

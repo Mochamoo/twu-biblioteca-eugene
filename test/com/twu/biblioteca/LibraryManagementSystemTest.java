@@ -47,4 +47,14 @@ public class LibraryManagementSystemTest {
                      "Phone: 0411262811", libSystem.generateUserInfoDisplay());
     }
 
+    @Test
+    public void initialiseDatabaseShouldPopulateLibraryManagementSystemWithData() {
+        LibraryManagementSystem newLibSystem = new LibraryManagementSystem();
+        newLibSystem.initialiseDatabase();
+
+        assertEquals(4, newLibSystem.getNumberOfAvailableBooks());
+        assertEquals(1, newLibSystem.getNumberOfAvailableMovies());
+        assertEquals(1, newLibSystem.getNumberOfUsers());
+    }
+
 }
