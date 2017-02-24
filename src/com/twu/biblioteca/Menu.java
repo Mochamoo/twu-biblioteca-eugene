@@ -37,6 +37,18 @@ public class Menu {
         return libSystem.returnBook(input.getInput());
     }
 
+    public String checkoutMovie(LibraryManagementSystem libSystem) {
+        if(libSystem.getNumberOfAvailableMovies() == 0) {
+            return "\nThere are currently no movies available.\n";
+        }
+
+        Input input = new Input();
+
+        System.out.println("Please type the name of the movie (case/symbol sensitive):");
+
+        return libSystem.checkoutMovie(input.getInput());
+    }
+
     public void performOption(Options option, LibraryManagementSystem libSystem) {
         switch(option) {
             case LIST_BOOKS:
@@ -50,6 +62,9 @@ public class Menu {
                 break;
             case LIST_MOVIES:
                 System.out.println(libSystem.generateMoviesDisplay());
+                break;
+            case CHECKOUT_MOVIE:
+                System.out.println(checkoutMovie(libSystem));
                 break;
             case VIEW_USER_INFO:
                 System.out.println(libSystem.generateUserInfoDisplay() + "\n");

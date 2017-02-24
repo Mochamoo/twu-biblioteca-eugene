@@ -26,5 +26,9 @@ public class MovieList {
         movies.put(movie.getTitle(), movie);
     }
 
+    public void removeMovie(String title) {
+        movies.remove(title);
+    }
+
 
 }

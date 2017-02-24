@@ -108,4 +108,12 @@ public class LibraryManagementSystemTest {
                      libSystem.generateMoviesDisplay());
     }
 
+    @Test
+    public void checkoutMovieShouldReturnThankYouMsgOnSuccessfulRent() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        assertEquals("\nThank you! Enjoy the movie.\n",
+                libSystem.checkoutMovie("The Bee Movie"));
+    }
 }

@@ -132,4 +132,16 @@ public class LibraryManagementSystem {
     public void addMovie(Movie movie) {
         availableMovies.addMovie(movie);
     }
+
+    public String checkoutMovie(String movieTitle) {
+        Movie movie;
+
+        if((movie = availableMovies.getMovieByTitle(movieTitle)) != null) {
+            borrowedMovies.addMovie(movie);
+            availableMovies.removeMovie(movie.getTitle());
+            return "\nThank you! Enjoy the movie.\n";
+        }
+
+        return "\nThat movie is not available.\n";
+    }
 }

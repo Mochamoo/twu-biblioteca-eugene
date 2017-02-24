@@ -7,8 +7,6 @@ public class BibliotecaApp {
         libSystem.addUser(new User(new Name("Bojack", "Horseman"),
                         "micro@Gmail.com", "04112628", "000-0001",
                 LoginHandler.hashPassword("64 digit hash")));
-        libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
-                           new Name("George", "Miller"), Rating.TEN));
 
         Menu menu = new Menu();
         System.out.println(menu.generateWelcome());
@@ -33,6 +31,8 @@ public class BibliotecaApp {
             libSystem.addBook(new Book("Introduction to the Design & Analysis of Algorithm",
                     new AuthorList(new Author("Anany", "Levitin")),
                     2012));
+            libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
+                    new Name("George", "Miller"), Rating.TEN));
 
             menu.loopMenu(libSystem);
         }

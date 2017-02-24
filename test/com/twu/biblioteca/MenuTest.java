@@ -85,4 +85,17 @@ public class MenuTest {
         assertEquals("\nThere are currently no books being borrowed.\n",
                 menu.returnBook(libSystem));
     }
+
+    @Test
+    public void checkoutMovieShouldDeclareNoAvailableMoviesIfAllAreBorrowed() {
+        libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
+                new Name("George", "Miller"), Rating.TEN));
+
+        in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
+        System.setIn(in);
+        menu.checkoutMovie(libSystem);
+
+        assertEquals("\nThere are currently no movies available.\n",
+                menu.checkoutMovie(libSystem));
+    }
 }
