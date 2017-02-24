@@ -104,7 +104,7 @@ public class MenuTest {
     @Test
     public void checkoutMovieShouldReturnThankYouMsgOnSuccessfulRental() {
         libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
-                new Name("George", "Miller"), Rating.TEN));
+                new Director("George", "Miller"), Rating.TEN));
 
         in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
         System.setIn(in);
@@ -114,7 +114,7 @@ public class MenuTest {
     @Test
     public void checkoutMovieShouldReturnBookUnavailableMessageIfBookDoesNotMatch() {
         libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
-                new Name("George", "Miller"), Rating.TEN));
+                new Director("George", "Miller"), Rating.TEN));
 
         in = new ByteArrayInputStream("Mad Max: Furiosa Road".getBytes());
         System.setIn(in);
@@ -132,7 +132,7 @@ public class MenuTest {
     @Test
     public void returnMovieShouldReturnThankYouMsgOnSuccessfulReturn() {
         libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
-                new Name("George", "Miller"), Rating.TEN));
+                new Director("George", "Miller"), Rating.TEN));
 
         in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
         System.setIn(in);
@@ -146,7 +146,7 @@ public class MenuTest {
     @Test
     public void returnMovieShouldReturnInvalidMovieMsgIfEnteredMovieNotFound() {
         libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
-                new Name("George", "Miller"), Rating.TEN));
+                new Director("George", "Miller"), Rating.TEN));
 
         in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
         System.setIn(in);

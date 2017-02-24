@@ -3,10 +3,10 @@ package com.twu.biblioteca.Service;
 import com.twu.biblioteca.Model.LibraryManagementSystem;
 import com.twu.biblioteca.Model.Options;
 
-public class MenuOptionsInput extends Input {
+public class MenuOptionsService {
     LibraryManagementSystem libSystem;
 
-    public MenuOptionsInput(LibraryManagementSystem libSystem) {
+    public MenuOptionsService(LibraryManagementSystem libSystem) {
         this.libSystem = libSystem;
     }
 

@@ -5,12 +5,12 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class UsernameInputTest {
-    UsernameInput input;
+public class UsernameServiceTest {
+    UsernameService input;
 
     @Before
     public void setup() {
-        input = new UsernameInput();
+        input = new UsernameService();
     }
 
     @Test

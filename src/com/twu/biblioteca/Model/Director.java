@@ -1,9 +1,9 @@
 package com.twu.biblioteca.Model;
 
-public class Author {
+public class Director {
     Name name;
 
-    public Author(String firstName, String lastName) {
+    public Director(String firstName, String lastName) {
         name = new Name(firstName, lastName);
     }
 

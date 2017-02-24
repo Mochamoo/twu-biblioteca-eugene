@@ -7,14 +7,14 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class MenuOptionsInputTest {
+public class MenuOptionsServiceTest {
     LibraryManagementSystem libSystem;
-    private MenuOptionsInput input;
+    private MenuOptionsService input;
 
     @Before
     public void setUp() throws Exception {
         libSystem = new LibraryManagementSystem();
-        input = new MenuOptionsInput(libSystem);
+        input = new MenuOptionsService(libSystem);
     }
 
     @Test

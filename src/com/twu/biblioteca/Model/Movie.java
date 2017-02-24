@@ -3,10 +3,10 @@ package com.twu.biblioteca.Model;
 public class Movie {
     private String title;
     private int year;
-    private Name director;
+    private Director director;
     private Rating rating;
 
-    public Movie(String title, int year, Name director, Rating rating) {
+    public Movie(String title, int year, Director director, Rating rating) {
         this.title = title;
         this.year = year;
         this.director = director;

@@ -4,8 +4,8 @@ import com.twu.biblioteca.Model.LibraryManagementSystem;
 import com.twu.biblioteca.Model.Options;
 import com.twu.biblioteca.Service.Input;
 import com.twu.biblioteca.Service.LoginHandler;
-import com.twu.biblioteca.Service.MenuOptionsInput;
-import com.twu.biblioteca.Service.UsernameInput;
+import com.twu.biblioteca.Service.MenuOptionsService;
+import com.twu.biblioteca.Service.UsernameService;
 
 public class Menu {
 
@@ -109,17 +109,17 @@ public class Menu {
     }
 
     public Options getOptionFromUser(LibraryManagementSystem libSystem) {
-        MenuOptionsInput inputHandler = new MenuOptionsInput(libSystem);
-
+        MenuOptionsService optionsFormatter = new MenuOptionsService(libSystem);
+        Input inputHandler = new Input();
         String input = inputHandler.getInput();
 
-        while((input = inputHandler.validateAgainstOptions(input)) == null) {
+        while((input = optionsFormatter.validateAgainstOptions(input)) == null) {
             System.out.println("Select a valid option!");
             System.out.println(generateMenu(libSystem));
             input = inputHandler.getInput();
         }
 
-        return inputHandler.convertInputToOption(input);
+        return optionsFormatter.convertInputToOption(input);
     }
 
     public void loopMenu(LibraryManagementSystem libSystem) {
@@ -133,11 +133,12 @@ public class Menu {
     }
 
     public String requestUsername() {
-        UsernameInput input = new UsernameInput();
+        UsernameService usernameFormatter = new UsernameService();
+        Input input = new Input();
 
         System.out.println("Please enter the 7 digits of your username:");
         String username = input.getInput();
-        while((username = input.getFormattedUsername(username)) == null) {
+        while((username = usernameFormatter.getFormattedUsername(username)) == null) {
             System.out.println("Username entered is not in correct format.");
             System.out.println("Please enter the 7 digits of your username:");
             username = input.getInput();

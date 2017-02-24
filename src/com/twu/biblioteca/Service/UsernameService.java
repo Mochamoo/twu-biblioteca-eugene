@@ -1,6 +1,6 @@
 package com.twu.biblioteca.Service;
 
-public class UsernameInput extends Input {
+public class UsernameService {
 
     public boolean isCorrectLength(String username) {
         if(username.length() == 7) {

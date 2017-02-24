@@ -12,7 +12,7 @@ public class MovieListTest {
     public void setup() {
         movies = new MovieList();
         movies.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar","Wright"), Rating.ONE));
+                new Director("Edgar","Wright"), Rating.ONE));
     }
 
     @Test

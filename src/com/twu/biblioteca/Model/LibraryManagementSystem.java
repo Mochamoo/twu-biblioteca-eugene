@@ -144,7 +144,7 @@ public class LibraryManagementSystem {
             new AuthorList(new Author("Anany", "Levitin")),
             2012));
         addMovie(new Movie("Mad Max: Fury Road", 2015,
-            new Name("George", "Miller"), Rating.TEN));
+            new Director("George", "Miller"), Rating.TEN));
     }
 
 }

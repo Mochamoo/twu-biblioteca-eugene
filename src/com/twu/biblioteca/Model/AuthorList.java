@@ -26,7 +26,7 @@ public class AuthorList {
         ArrayList<String> authorNames = new ArrayList<String>();
 
         for(Author eachAuthor : authorList) {
-            authorNames.add(eachAuthor.getFullNameInString());
+            authorNames.add(eachAuthor.getFullName());
         }
 
         return StringUtils.join(authorNames, ", ");

@@ -16,7 +16,7 @@ public class MoviesManagerTest {
     @Test
     public void addMovieShouldPutNewMovieIntoAvailableMoviesList() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         assertEquals(1, moviesManager.getNumberOfAvailableMovies());
     }
@@ -24,7 +24,7 @@ public class MoviesManagerTest {
     @Test
     public void generateMoviesDisplayShouldReturnHeaderAndListOfMovies() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         assertEquals("Name | Year | Director | Rating\n" +
                         "The Bee Movie | 1998 | Edgar Wright | 1\n",
@@ -34,7 +34,7 @@ public class MoviesManagerTest {
     @Test
     public void checkoutMovieShouldReturnTrueOnSuccessfulRent() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         assertEquals(true, moviesManager.checkoutMovie("The Bee Movie"));
     }
@@ -42,7 +42,7 @@ public class MoviesManagerTest {
     @Test
     public void checkoutMovieShouldReturnFalseOnUnsuccessfulRent() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         assertEquals(false, moviesManager.checkoutMovie("The Bee "));
     }
@@ -50,7 +50,7 @@ public class MoviesManagerTest {
     @Test
     public void returnMovieShouldReturnTrueOnSuccessfulReturn() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         moviesManager.checkoutMovie("The Bee Movie");
 
@@ -60,7 +60,7 @@ public class MoviesManagerTest {
     @Test
     public void returnMovieShouldReturnFalseOnUnsuccessfulReturn() {
         moviesManager.addMovie(new Movie("The Bee Movie", 1998,
-                new Name("Edgar", "Wright"), Rating.ONE));
+                new Director("Edgar", "Wright"), Rating.ONE));
 
         moviesManager.checkoutMovie("The Bee Movie");
 
