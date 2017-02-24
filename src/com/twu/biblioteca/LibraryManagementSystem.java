@@ -40,28 +40,28 @@ public class LibraryManagementSystem {
         return headerAndListOfBooks.toString();
     }
 
-    public String checkoutBook(String bookTitle) {
+    public boolean checkoutBook(String bookTitle) {
         Book book;
 
         if((book = availableBooks.getBookByTitle(bookTitle)) != null) {
             borrowedBooks.addBook(book);
             availableBooks.removeBook(book.getTitle());
-            return "\nThank you! Enjoy the book.\n";
+            return true;
         }
 
-        return "\nThat book is not available.\n";
+        return false;
     }
 
-    public String returnBook(String bookTitle) {
+    public boolean returnBook(String bookTitle) {
         Book book;
 
         if((book = borrowedBooks.getBookByTitle(bookTitle)) != null) {
             availableBooks.addBook(book);
             borrowedBooks.removeBook(book.getTitle());
-            return "\nThank you for returning the book.\n";
+            return true;
         }
 
-        return "\nThat is not a valid book to return.\n";
+        return false;
     }
 
     public int getNumberOfAvailableBooks() {
@@ -133,15 +133,31 @@ public class LibraryManagementSystem {
         availableMovies.addMovie(movie);
     }
 
-    public String checkoutMovie(String movieTitle) {
+    public boolean checkoutMovie(String movieTitle) {
         Movie movie;
 
         if((movie = availableMovies.getMovieByTitle(movieTitle)) != null) {
             borrowedMovies.addMovie(movie);
             availableMovies.removeMovie(movie.getTitle());
-            return "\nThank you! Enjoy the movie.\n";
+            return true;
         }
 
-        return "\nThat movie is not available.\n";
+        return false;
+    }
+
+    public boolean returnMovie(String movieTitle) {
+        Movie movie;
+
+        if((movie = borrowedMovies.getMovieByTitle(movieTitle)) != null) {
+            borrowedMovies.removeMovie(movie.getTitle());
+            availableMovies.addMovie(movie);
+            return true;
+        }
+
+        return false;
+    }
+
+    public int getNumberOfBorrowedMovies() {
+        return borrowedMovies.size();
     }
 }

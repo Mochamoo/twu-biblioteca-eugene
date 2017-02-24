@@ -15,38 +15,64 @@ public class Menu {
 
     public String checkoutBook(LibraryManagementSystem libSystem) {
         if(libSystem.getNumberOfAvailableBooks() == 0) {
-            return "\nThere are currently no books available.\n";
+            return "There are currently no books available.";
         }
 
         Input input = new Input();
 
         System.out.println("Please type the name of the book (case/symbol sensitive):");
 
-        return libSystem.checkoutBook(input.getInput());
+        if(libSystem.checkoutBook(input.getInput()) == true) {
+            return "Thank you! Enjoy the book.";
+        }
+
+        return "That book is not available.";
     }
 
     public String returnBook(LibraryManagementSystem libSystem) {
         if(libSystem.getNumberOfBorrowedBooks() == 0) {
-            return "\nThere are currently no books being borrowed.\n";
+            return "There are currently no books being borrowed.";
         }
 
         Input input = new Input();
 
         System.out.println("Please type the name of the book (case/symbol sensitive):");
 
-        return libSystem.returnBook(input.getInput());
+        if(libSystem.returnBook(input.getInput()) == true) {
+            return "Thank you for returning the book.";
+        }
+        return "That is not a valid book to return.";
     }
 
     public String checkoutMovie(LibraryManagementSystem libSystem) {
         if(libSystem.getNumberOfAvailableMovies() == 0) {
-            return "\nThere are currently no movies available.\n";
+            return "There are currently no movies available.";
         }
 
         Input input = new Input();
 
         System.out.println("Please type the name of the movie (case/symbol sensitive):");
 
-        return libSystem.checkoutMovie(input.getInput());
+        if(libSystem.checkoutMovie(input.getInput())) {
+            return "Thank you! Enjoy the movie.";
+        }
+
+        return "That movie is unavailable.";
+    }
+
+    public String returnMovie(LibraryManagementSystem libSystem) {
+        if(libSystem.getNumberOfBorrowedMovies() == 0) {
+            return "There are currently no movies being borrowed.";
+        }
+
+        Input input = new Input();
+
+        System.out.println("Please type the name of the movie (case/symbol sensitive):");
+
+        if(libSystem.returnMovie(input.getInput()) == true) {
+            return "Thank you for returning the movie.";
+        }
+        return "That is not a valid movie to return.";
     }
 
     public void performOption(Options option, LibraryManagementSystem libSystem) {
@@ -65,6 +91,9 @@ public class Menu {
                 break;
             case CHECKOUT_MOVIE:
                 System.out.println(checkoutMovie(libSystem));
+                break;
+            case RETURN_MOVIE:
+                System.out.println(returnMovie(libSystem));
                 break;
             case VIEW_USER_INFO:
                 System.out.println(libSystem.generateUserInfoDisplay() + "\n");

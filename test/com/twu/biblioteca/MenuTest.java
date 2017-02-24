@@ -76,18 +76,60 @@ public class MenuTest {
         System.setIn(in);
         menu.checkoutBook(libSystem);
 
-        assertEquals("\nThere are currently no books available.\n",
+        assertEquals("There are currently no books available.",
                 menu.checkoutBook(libSystem));
     }
 
     @Test
+    public void checkoutBookShouldReturnThankYouMessageOnSuccessfulCheckout() {
+        in = new ByteArrayInputStream("Test-Driven Development".getBytes());
+        System.setIn(in);
+
+        assertEquals("Thank you! Enjoy the book.", menu.checkoutBook(libSystem));
+    }
+
+    @Test
     public void returnBookShouldDeclareNoBooksToReturnIfNoneAreBorrowed() {
-        assertEquals("\nThere are currently no books being borrowed.\n",
+        assertEquals("There are currently no books being borrowed.",
                 menu.returnBook(libSystem));
     }
 
     @Test
     public void checkoutMovieShouldDeclareNoAvailableMoviesIfAllAreBorrowed() {
+        assertEquals("There are currently no movies available.",
+                menu.checkoutMovie(libSystem));
+    }
+
+    @Test
+    public void checkoutMovieShouldReturnThankYouMsgOnSuccessfulRental() {
+        libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
+                new Name("George", "Miller"), Rating.TEN));
+
+        in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
+        System.setIn(in);
+        assertEquals("Thank you! Enjoy the movie.", menu.checkoutMovie(libSystem));
+    }
+
+    @Test
+    public void checkoutMovieShouldReturnBookUnavailableMessageIfBookDoesNotMatch() {
+        libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
+                new Name("George", "Miller"), Rating.TEN));
+
+        in = new ByteArrayInputStream("Mad Max: Furiosa Road".getBytes());
+        System.setIn(in);
+        assertEquals("That movie is unavailable.", menu.checkoutMovie(libSystem));
+    }
+
+    @Test
+    public void returnMovieShouldReturnNoMoviesBeingBorrowedMsgIfNoAvailableMovies() {
+        in = new ByteArrayInputStream("Mad Max: Furiosa Road".getBytes());
+        System.setIn(in);
+        assertEquals("There are currently no movies being borrowed.",
+                menu.returnMovie(libSystem));
+    }
+
+    @Test
+    public void returnMovieShouldReturnThankYouMsgOnSuccessfulReturn() {
         libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
                 new Name("George", "Miller"), Rating.TEN));
 
@@ -95,7 +137,22 @@ public class MenuTest {
         System.setIn(in);
         menu.checkoutMovie(libSystem);
 
-        assertEquals("\nThere are currently no movies available.\n",
-                menu.checkoutMovie(libSystem));
+        in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
+        System.setIn(in);
+        assertEquals("Thank you for returning the movie.", menu.returnMovie(libSystem));
+    }
+
+    @Test
+    public void returnMovieShouldReturnInvalidMovieMsgIfEnteredMovieNotFound() {
+        libSystem.addMovie(new Movie("Mad Max: Fury Road", 2015,
+                new Name("George", "Miller"), Rating.TEN));
+
+        in = new ByteArrayInputStream("Mad Max: Fury Road".getBytes());
+        System.setIn(in);
+        menu.checkoutMovie(libSystem);
+
+        in = new ByteArrayInputStream("Mad Max: Furiosa Road".getBytes());
+        System.setIn(in);
+        assertEquals("That is not a valid movie to return.", menu.returnMovie(libSystem));
     }
 }

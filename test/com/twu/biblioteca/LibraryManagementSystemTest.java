@@ -41,31 +41,27 @@ public class LibraryManagementSystemTest {
     }
 
     @Test
-    public void checkoutBookShouldDisplayThankYouMessageOnSuccessfulCheckout() {
-        assertEquals("\nThank you! Enjoy the book.\n",
-                libSystem.checkoutBook("Gears of War: Anvil Gate"));
+    public void checkoutBookShouldReturnTrueOnSuccessfulCheckout() {
+        assertEquals(true, libSystem.checkoutBook("Gears of War: Anvil Gate"));
     }
 
     @Test
-    public void checkoutBookShouldDisplayBookNotFoundMsgOnUnsuccessfulCheckout() {
-        assertEquals("\nThat book is not available.\n",
-                libSystem.checkoutBook("Non-existent book"));
+    public void checkoutBookShouldReturnFalseOnUnsuccessfulCheckout() {
+        assertEquals(false, libSystem.checkoutBook("Non-existent book"));
     }
 
     @Test
-    public void returnBookShouldDisplayThankYouMsgOnSuccessfulReturn() {
+    public void returnBookShouldReturnTrueOnSuccessfulReturn() {
         libSystem.checkoutBook("Gears of War: Anvil Gate");
 
-        assertEquals("\nThank you for returning the book.\n",
-                libSystem.returnBook("Gears of War: Anvil Gate"));
+        assertEquals(true, libSystem.returnBook("Gears of War: Anvil Gate"));
     }
 
     @Test
-    public void returnBookShouldDisplayBookUnavailableMsgOnInvalidBookName() {
+    public void returnBookShouldReturnFalseOnInvalidBookName() {
         libSystem.checkoutBook("Gears of War: Anvil Gate");
 
-        assertEquals("\nThat is not a valid book to return.\n",
-                libSystem.returnBook("Goats of War: Manvil Grate"));
+        assertEquals(false, libSystem.returnBook("Goats of War: Manvil Grate"));
     }
 
     @Test
@@ -109,11 +105,38 @@ public class LibraryManagementSystemTest {
     }
 
     @Test
-    public void checkoutMovieShouldReturnThankYouMsgOnSuccessfulRent() {
+    public void checkoutMovieShouldReturnTrueOnSuccessfulRent() {
         libSystem.addMovie(new Movie("The Bee Movie", 1998,
                 new Name("Edgar", "Wright"), Rating.ONE));
 
-        assertEquals("\nThank you! Enjoy the movie.\n",
-                libSystem.checkoutMovie("The Bee Movie"));
+        assertEquals(true, libSystem.checkoutMovie("The Bee Movie"));
+    }
+
+    @Test
+    public void checkoutMovieShouldReturnFalseOnUnsuccessfulRent() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        assertEquals(false, libSystem.checkoutMovie("The Bee "));
+    }
+
+    @Test
+    public void returnMovieShouldReturnTrueOnSuccessfulReturn() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        libSystem.checkoutMovie("The Bee Movie");
+
+        assertEquals(true, libSystem.returnMovie("The Bee Movie"));
+    }
+
+    @Test
+    public void returnMovieShouldReturnFalseOnUnsuccessfulReturn() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        libSystem.checkoutMovie("The Bee Movie");
+
+        assertEquals(false, libSystem.returnMovie("The Bee"));
     }
 }
