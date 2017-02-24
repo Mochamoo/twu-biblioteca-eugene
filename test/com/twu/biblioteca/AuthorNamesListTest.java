@@ -5,26 +5,26 @@ import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class AuthorListTest {
-    AuthorList authors;
+public class AuthorNamesListTest {
+    AuthorNamesList authors;
 
     @Before
     public void setup() {
-        authors = new AuthorList();
+        authors = new AuthorNamesList();
     }
 
     @Test
     public void authorListVarArgsConstructorShouldAcceptMultipleAuthors() {
-        authors = new AuthorList(new Author("Diane","Nguyen"),
-                                 new Author("Mister", "Peanutbutter"));
+        authors = new AuthorNamesList(new Name("Diane","Nguyen"),
+                                 new Name("Mister", "Peanutbutter"));
         assertEquals(2, authors.getNumberOfAuthors());
     }
 
     @Test
     public void getAuthorNamesShouldReturnFormattedStringOfAuthors() {
-        authors.addNewAuthor(new Author("Diane", "Nguyen"));
-        authors.addNewAuthor(new Author("Mister", "Peanutbutter"));
-        authors.addNewAuthor(new Author("Margo", "Martindale"));
+        authors.addNewAuthor(new Name("Diane", "Nguyen"));
+        authors.addNewAuthor(new Name("Mister", "Peanutbutter"));
+        authors.addNewAuthor(new Name("Margo", "Martindale"));
 
         assertEquals("Diane Nguyen, Mister Peanutbutter, Margo Martindale",
                 authors.getAuthorNames());

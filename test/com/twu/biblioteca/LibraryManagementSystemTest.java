@@ -12,16 +12,16 @@ public class LibraryManagementSystemTest {
     public void setup() {
         libSystem = new LibraryManagementSystem();
         libSystem.addBook(new Book("Test-Driven Development",
-                new AuthorList(new Author("Kent", "Beck")),
+                new AuthorNamesList(new Name("Kent", "Beck")),
                 2003));
         libSystem.addBook(new Book("Gears of War: Anvil Gate",
-                new AuthorList(new Author("Karen", "Travis")),
+                new AuthorNamesList(new Name("Karen", "Travis")),
                 2010));
         libSystem.addBook(new Book("Artificial Intelligence: A Modern Approach",
-                new AuthorList(new Author("Peter", "Norvig")),
+                new AuthorNamesList(new Name("Peter", "Norvig")),
                 2010));
         libSystem.addBook(new Book("Introduction to the Design & Analysis of Algorithm",
-                new AuthorList(new Author("Anany", "Levitin")),
+                new AuthorNamesList(new Name("Anany", "Levitin")),
                 2012));
     }
 

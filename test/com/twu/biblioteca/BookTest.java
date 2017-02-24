@@ -11,7 +11,7 @@ public class BookTest {
     @Before
     public void setUp() {
         book = new Book("Test-Driven Development",
-               new AuthorList(new Author("Kent", "Beck")), 2003);
+               new AuthorNamesList(new Name("Kent", "Beck")), 2003);
     }
 
     @Test
