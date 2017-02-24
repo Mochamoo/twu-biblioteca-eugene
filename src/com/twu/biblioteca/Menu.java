@@ -48,6 +48,12 @@ public class Menu {
             case RETURN_BOOK:
                 System.out.println(returnBook(libSystem));
                 break;
+            case LIST_MOVIES:
+                System.out.println(libSystem.generateMoviesDisplay());
+                break;
+            case VIEW_USER_INFO:
+                System.out.println(libSystem.generateUserInfoDisplay() + "\n");
+                break;
         }
     }
 

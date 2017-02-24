@@ -60,15 +60,15 @@ public class User {
         return hash;
     }
 
-    public String getFirstName() {
-        return name.getFirstName();
-    }
-
-    public String getLastName() {
-        return name.getLastName();
-    }
-
     public String getFullName() {
         return name.getFullName();
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public String getPhoneNumber() {
+        return phoneNumber;
     }
 }

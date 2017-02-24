@@ -77,4 +77,35 @@ public class LibraryManagementSystemTest {
         assertEquals(1, libSystem.getNumberOfUsers());
     }
 
+    @Test
+    public void generateUserInfoDisplayShouldReturnCurrentUserInformation() {
+        User currentUser = new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "0411262811", "000-0001",
+                "64 digit hash");
+        libSystem.addUser(currentUser);
+        libSystem.setCurrentUser(currentUser);
+
+        assertEquals("Name: Bojack Horseman\n" +
+                     "E-mail: micro@Gmail.com\n" +
+                     "Phone: 0411262811", libSystem.generateUserInfoDisplay());
+    }
+
+    @Test
+    public void addMovieShouldPutNewMovieIntoAvailableMoviesList() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        assertEquals(1, libSystem.getNumberOfAvailableMovies());
+    }
+
+    @Test
+    public void generateMoviesDisplayShouldReturnHeaderAndListOfMovies() {
+        libSystem.addMovie(new Movie("The Bee Movie", 1998,
+                new Name("Edgar", "Wright"), Rating.ONE));
+
+        assertEquals("Name | Year | Director | Rating\n" +
+                     "The Bee Movie | 1998 | Edgar Wright | 1\n",
+                     libSystem.generateMoviesDisplay());
+    }
+
 }

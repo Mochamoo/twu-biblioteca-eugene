@@ -3,12 +3,16 @@ package com.twu.biblioteca;
 public class LibraryManagementSystem {
     private BookList availableBooks;
     private BookList borrowedBooks;
+    private MovieList availableMovies;
+    private MovieList borrowedMovies;
     private User currentUser;
     private UserList users;
 
     public LibraryManagementSystem() {
         availableBooks = new BookList();
         borrowedBooks = new BookList();
+        availableMovies = new MovieList();
+        borrowedMovies = new MovieList();
         users = new UserList();
         currentUser = null;
     }
@@ -17,13 +21,13 @@ public class LibraryManagementSystem {
         availableBooks.addBook(book);
     }
 
-    private String generateHeader() {
+    private String generateBookHeader() {
         return "Title | Author | Year Published";
     }
 
     public String generateBooksDisplay() {
         StringBuilder headerAndListOfBooks = new StringBuilder();
-        headerAndListOfBooks.append(generateHeader());
+        headerAndListOfBooks.append(generateBookHeader());
         headerAndListOfBooks.append("\n");
 
         for(Book book : availableBooks.getBooks().values()) {
@@ -93,4 +97,39 @@ public class LibraryManagementSystem {
         return false;
     }
 
+    public String generateUserInfoDisplay() {
+        String userInfo = "Name: " + currentUser.getFullName() + "\n";
+        userInfo += "E-mail: " + currentUser.getEmail() + "\n";
+        userInfo += "Phone: " + currentUser.getPhoneNumber();
+
+        return userInfo;
+    }
+
+    private String generateMovieHeader() {
+        return "Name | Year | Director | Rating";
+    }
+
+    public String generateMoviesDisplay() {
+        StringBuilder headerAndListOfMovies = new StringBuilder();
+        headerAndListOfMovies.append(generateMovieHeader());
+        headerAndListOfMovies.append("\n");
+
+        for(Movie movie : availableMovies.getMovies().values()) {
+            headerAndListOfMovies.append(String.format("%s | %d | %s | %s\n",
+                    movie.getTitle(),
+                    movie.getYearReleased(),
+                    movie.getDirectorName(),
+                    movie.getRatingInString()));
+        }
+
+        return headerAndListOfMovies.toString();
+    }
+
+    public int getNumberOfAvailableMovies() {
+        return availableMovies.size();
+    }
+
+    public void addMovie(Movie movie) {
+        availableMovies.addMovie(movie);
+    }
 }

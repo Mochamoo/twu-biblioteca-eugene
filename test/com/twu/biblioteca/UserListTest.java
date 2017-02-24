@@ -45,4 +45,5 @@ public class UserListTest {
         assertEquals(false, users.isValidUser("000-0001", "64 digit hash"));
     }
 
+
 }
