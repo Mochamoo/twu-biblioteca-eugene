@@ -1,6 +1,5 @@
 package com.twu.biblioteca.Model;
 
-import com.twu.biblioteca.Model.Rating;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;

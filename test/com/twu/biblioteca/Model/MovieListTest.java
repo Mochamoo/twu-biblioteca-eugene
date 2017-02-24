@@ -1,9 +1,5 @@
 package com.twu.biblioteca.Model;
 
-import com.twu.biblioteca.Model.Movie;
-import com.twu.biblioteca.Model.MovieList;
-import com.twu.biblioteca.Model.Name;
-import com.twu.biblioteca.Model.Rating;
 import org.junit.Before;
 import org.junit.Test;
 

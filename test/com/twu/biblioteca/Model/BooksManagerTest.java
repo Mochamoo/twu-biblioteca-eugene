@@ -1,9 +1,5 @@
 package com.twu.biblioteca.Model;
 
-import com.twu.biblioteca.Model.AuthorNamesList;
-import com.twu.biblioteca.Model.Book;
-import com.twu.biblioteca.Model.BooksManager;
-import com.twu.biblioteca.Model.Name;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -17,16 +13,16 @@ public class BooksManagerTest {
         booksManager = new BooksManager();
         ;
         booksManager.addBook(new Book("Test-Driven Development",
-                new AuthorNamesList(new Name("Kent", "Beck")),
+                new AuthorList(new Author("Kent", "Beck")),
                 2003));
         booksManager.addBook(new Book("Gears of War: Anvil Gate",
-                new AuthorNamesList(new Name("Karen", "Travis")),
+                new AuthorList(new Author("Karen", "Travis")),
                 2010));
         booksManager.addBook(new Book("Artificial Intelligence: A Modern Approach",
-                new AuthorNamesList(new Name("Peter", "Norvig")),
+                new AuthorList(new Author("Peter", "Norvig")),
                 2010));
         booksManager.addBook(new Book("Introduction to the Design & Analysis of Algorithm",
-                new AuthorNamesList(new Name("Anany", "Levitin")),
+                new AuthorList(new Author("Anany", "Levitin")),
                 2012));
     }
 

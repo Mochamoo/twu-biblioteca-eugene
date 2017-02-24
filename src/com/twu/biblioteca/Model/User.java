@@ -1,14 +1,11 @@
 package com.twu.biblioteca.Model;
 
-import java.util.ArrayList;
-
 public class User {
     private Name name;
     private String email;
     private String phoneNumber;
     private String username;
     private String hash;
-    private ArrayList<Options> userOptions;
 
     public User(Name name, String email, String phoneNumber,
                 String username, String password) {

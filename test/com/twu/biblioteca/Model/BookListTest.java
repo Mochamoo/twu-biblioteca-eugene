@@ -1,9 +1,5 @@
 package com.twu.biblioteca.Model;
 
-import com.twu.biblioteca.Model.AuthorNamesList;
-import com.twu.biblioteca.Model.Book;
-import com.twu.biblioteca.Model.BookList;
-import com.twu.biblioteca.Model.Name;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -20,7 +16,7 @@ public class BookListTest {
     @Test
     public void addBookShouldPutOneNewBookIntoBookList() {
         bookList.addBook(new Book("Test-Driven Development",
-                new AuthorNamesList(new Name("Kent", "Beck")),
+                new AuthorList(new Author("Kent", "Beck")),
                 2003));
 
         assertEquals(1, bookList.size());
@@ -30,7 +26,7 @@ public class BookListTest {
     public void removeBookShouldHaveOneLessBookAfterRemoving() {
         addBookShouldPutOneNewBookIntoBookList();
         bookList.addBook(new Book("Gears of War: Anvil Gate",
-                new AuthorNamesList(new Name("Karen", "Travis")),
+                new AuthorList(new Author("Karen", "Travis")),
                 2010));
         bookList.removeBook("Test-Driven Development");
         assertEquals(1, bookList.size());

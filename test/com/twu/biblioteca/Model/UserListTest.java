@@ -1,8 +1,5 @@
 package com.twu.biblioteca.Model;
 
-import com.twu.biblioteca.Model.Name;
-import com.twu.biblioteca.Model.User;
-import com.twu.biblioteca.Model.UserList;
 import org.junit.Before;
 import org.junit.Test;
 
