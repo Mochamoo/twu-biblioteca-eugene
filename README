@@ -61,7 +61,7 @@ Instructions to run in Linux
 
 Logging in
 ==========
-At current, user accounts are hard coded. If you would like to test
+At current, libSystem accounts are hard coded. If you would like to test
 program functionality, you may log in with the following username and
 password:
 Username: 0000001

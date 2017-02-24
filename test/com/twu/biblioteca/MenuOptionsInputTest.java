@@ -6,13 +6,13 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MenuOptionsInputTest {
+    LibraryManagementSystem libSystem;
     private MenuOptionsInput input;
 
     @Before
     public void setUp() throws Exception {
-        User user = new User(new Name("Bojack", "Horseman"),
-                "micro@Gmail.com", "04112628", "123-4567", "64 digit hash");
-        input = new MenuOptionsInput(user);
+        libSystem = new LibraryManagementSystem();
+        input = new MenuOptionsInput(libSystem);
     }
 
     @Test

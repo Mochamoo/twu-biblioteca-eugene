@@ -17,9 +17,11 @@ public class LoginHandler {
 
         } catch(NoSuchAlgorithmException nsae) {
             System.err.println(algorithm + " is not a known algorithm.");
+            nsae.printStackTrace();
             return "";
         } catch(UnsupportedEncodingException uee) {
             System.err.println(encoding + " is not a supported encoding scheme.");
+            uee.printStackTrace();
             return "";
         }
 

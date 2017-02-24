@@ -55,7 +55,7 @@ public class MenuTest {
                      "5) Checkout Movie\n" +
                      "6) Return Movie\n" +
                      "7) View User Info\n" +
-                     "8) Quit\n", menu.generateMenu(customer));
+                     "8) Quit\n", menu.generateMenu(libSystem));
     }
 
     @Test

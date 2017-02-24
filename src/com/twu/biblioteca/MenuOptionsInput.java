@@ -1,10 +1,10 @@
 package com.twu.biblioteca;
 
 public class MenuOptionsInput extends Input {
-    User user;
+    LibraryManagementSystem libSystem;
 
-    public MenuOptionsInput(User user) {
-        this.user = user;
+    public MenuOptionsInput(LibraryManagementSystem libSystem) {
+        this.libSystem = libSystem;
     }
 
     public String validateAgainstOptions(String input) {
@@ -12,7 +12,7 @@ public class MenuOptionsInput extends Input {
 
         try {
             userSelection = Integer.parseInt(input);
-            if(userSelection <= 0 || userSelection > user.getNumOptions()) {
+            if(userSelection <= 0 || userSelection > libSystem.getNumOptions()) {
                 throw new NumberFormatException();
             }
 
@@ -26,7 +26,7 @@ public class MenuOptionsInput extends Input {
     }
 
     public Options convertInputToOption(String input) {
-        return user.getOption(Integer.parseInt(input));
+        return libSystem.getOption(Integer.parseInt(input));
     }
 
     public Options getOption(Menu menu) {
@@ -36,7 +36,7 @@ public class MenuOptionsInput extends Input {
             if(input == "Select a valid option!") {
                 System.out.println("Select a valid option!");
             }
-            System.out.println(menu.generateMenu(user));
+            System.out.println(menu.generateMenu(libSystem));
             input = validateAgainstOptions(getInput());
         }
 

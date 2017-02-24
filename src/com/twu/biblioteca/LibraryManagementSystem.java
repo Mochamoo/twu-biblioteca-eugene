@@ -1,11 +1,14 @@
 package com.twu.biblioteca;
 
+import java.util.ArrayList;
+
 public class LibraryManagementSystem {
     private BookList availableBooks;
     private BookList borrowedBooks;
     private MovieList availableMovies;
     private MovieList borrowedMovies;
     private User currentUser;
+    private ArrayList<Options> userOptions;
     private UserList users;
 
     public LibraryManagementSystem() {
@@ -15,6 +18,16 @@ public class LibraryManagementSystem {
         borrowedMovies = new MovieList();
         users = new UserList();
         currentUser = null;
+
+        userOptions = new ArrayList<Options>();
+        userOptions.add(Options.LIST_BOOKS);
+        userOptions.add(Options.CHECKOUT_BOOK);
+        userOptions.add(Options.RETURN_BOOK);
+        userOptions.add(Options.LIST_MOVIES);
+        userOptions.add(Options.CHECKOUT_MOVIE);
+        userOptions.add(Options.RETURN_MOVIE);
+        userOptions.add(Options.VIEW_USER_INFO);
+        userOptions.add(Options.QUIT);
     }
 
     public void addBook(Book book) {
@@ -84,10 +97,6 @@ public class LibraryManagementSystem {
         currentUser = user;
     }
 
-    public User getCurrentUser() {
-        return currentUser;
-    }
-
     public boolean isValidUser(String username, String hash) {
         if(users.isValidUser(username, hash)) {
             setCurrentUser(users.getUserByUsername(username));
@@ -103,6 +112,28 @@ public class LibraryManagementSystem {
         userInfo += "Phone: " + currentUser.getPhoneNumber();
 
         return userInfo;
+    }
+
+    public String generateUserOptionsString() {
+        StringBuilder availableOptionsToUser = new StringBuilder();
+        int i = 1;
+
+        for(Options option : userOptions) {
+            availableOptionsToUser.append(
+                    String.format("%d) %s\n", i, option.getOptionString()));
+
+            ++i;
+        }
+
+        return availableOptionsToUser.toString();
+    }
+
+    public int getNumOptions() {
+        return userOptions.size();
+    }
+
+    public Options getOption(int index) {
+        return userOptions.get(index);
     }
 
     private String generateMovieHeader() {

@@ -6,9 +6,9 @@ public class Menu {
         return "===Welcome to Biblioteca!===";
     }
 
-    public String generateMenu(User user) {
+    public String generateMenu(LibraryManagementSystem libSystem) {
         String menuMessage = "Please make your selection (Enter one of the numbers below):\n";
-        menuMessage += user.getUserOptions();
+        menuMessage += libSystem.generateUserOptionsString();
 
         return menuMessage;
     }
@@ -102,7 +102,7 @@ public class Menu {
     }
 
     public void loopMenu(LibraryManagementSystem libSystem) {
-        MenuOptionsInput userInput = new MenuOptionsInput(libSystem.getCurrentUser());
+        MenuOptionsInput userInput = new MenuOptionsInput(libSystem);
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {
