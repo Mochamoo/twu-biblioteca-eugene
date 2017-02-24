@@ -209,4 +209,12 @@ public class MenuTest {
 
         assertEquals(false, menu.verifyUser(libSystem, username, password));
     }
+
+    @Test
+    public void getOptionFromUserShouldReturnAnOptionEnumFromValidInput() {
+        in = new ByteArrayInputStream("4".getBytes());
+        System.setIn(in);
+
+        assertEquals(Options.LIST_MOVIES, menu.getOptionFromUser(libSystem));
+    }
 }

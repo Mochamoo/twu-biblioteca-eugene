@@ -101,12 +101,27 @@ public class Menu {
         }
     }
 
+    public Options getOptionFromUser(LibraryManagementSystem libSystem) {
+        MenuOptionsInput inputHandler = new MenuOptionsInput(libSystem);
+
+        String input = inputHandler.getInput();
+
+        while((input = inputHandler.validateAgainstOptions(input)) == null) {
+            System.out.println("Select a valid option!");
+            System.out.println(generateMenu(libSystem));
+            input = inputHandler.getInput();
+        }
+
+        return inputHandler.convertInputToOption(input);
+    }
+
     public void loopMenu(LibraryManagementSystem libSystem) {
-        MenuOptionsInput userInput = new MenuOptionsInput(libSystem);
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {
-            selectedOption = userInput.getOption(this);
+            System.out.println(generateMenu(libSystem));
+            selectedOption = getOptionFromUser(libSystem);
+            //selectedOption = userInput.getOption(this);
             performOption(selectedOption, libSystem);
         }
     }

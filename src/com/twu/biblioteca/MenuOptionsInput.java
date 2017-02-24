@@ -17,7 +17,7 @@ public class MenuOptionsInput extends Input {
             }
 
         } catch(NumberFormatException nfe) {
-            return "Select a valid option!";
+            return null;
         }
 
         //Will be using this number to access array, so - 1
@@ -29,17 +29,4 @@ public class MenuOptionsInput extends Input {
         return libSystem.getOption(Integer.parseInt(input));
     }
 
-    public Options getOption(Menu menu) {
-        String input = null;
-
-        while(input == null || input == "Select a valid option!") {
-            if(input == "Select a valid option!") {
-                System.out.println("Select a valid option!");
-            }
-            System.out.println(menu.generateMenu(libSystem));
-            input = validateAgainstOptions(getInput());
-        }
-
-        return convertInputToOption(input);
-    }
 }
