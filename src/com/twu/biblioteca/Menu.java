@@ -110,4 +110,32 @@ public class Menu {
             performOption(selectedOption, libSystem);
         }
     }
+
+    public String requestUsername() {
+        UsernameInput input = new UsernameInput();
+
+        System.out.println("Please enter the 7 digits of your username:");
+        String username = input.getInput();
+        while((username = input.getFormattedUsername(username)) == null) {
+            System.out.println("Username entered is not in correct format.");
+            System.out.println("Please enter the 7 digits of your username:");
+            username = input.getInput();
+        }
+
+        return username;
+    }
+
+    public String requestPassword() {
+        Input input = new Input();
+
+        System.out.println("Please enter your password.");
+        return input.getInput();
+    }
+
+    public boolean verifyUser(LibraryManagementSystem libSystem,
+                              String username, String password) {
+        LoginHandler handler = new LoginHandler();
+
+        return handler.validateLoginDetails(libSystem, username, password);
+    }
 }

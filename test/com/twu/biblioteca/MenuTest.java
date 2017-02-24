@@ -155,4 +155,58 @@ public class MenuTest {
         System.setIn(in);
         assertEquals("That is not a valid movie to return.", menu.returnMovie(libSystem));
     }
+
+    @Test
+    public void requestUsernameShouldReturnUsernameIfFormatIsSevenIntegers() {
+        in = new ByteArrayInputStream("1235678".getBytes());
+        System.setIn(in);
+
+        assertEquals("123-5678", menu.requestUsername());
+    }
+
+    @Test
+    public void requestPasswordShouldReturnEnteredPassword() {
+        in = new ByteArrayInputStream("Amanda".getBytes());
+        System.setIn(in);
+
+        assertEquals("Amanda", menu.requestPassword());
+    }
+
+    @Test
+    public void verifyUserShouldReturnTrueIfUserCredentialsAreCorrect() {
+        LibraryManagementSystem libSystem = new LibraryManagementSystem();
+        String hash = "fdb8534840de9c6d46d6004697249a74c1730abfc3a2c090f940c91b388b66db";
+        libSystem.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "123-4567",
+                hash));
+
+        in = new ByteArrayInputStream("1234567".getBytes());
+        System.setIn(in);
+        String username = menu.requestUsername();
+
+        in = new ByteArrayInputStream("64 digit hash".getBytes());
+        System.setIn(in);
+        String password = menu.requestPassword();
+
+        assertEquals(true, menu.verifyUser(libSystem, username, password));
+    }
+
+    @Test
+    public void verifyUserShouldReturnFalseIfUserCredentialsIncorrect() {
+        LibraryManagementSystem libSystem = new LibraryManagementSystem();
+        String hash = "fdb8534840de9c6d46d6004697249a74c1730abfc3a2c090f940c91b388b66db";
+        libSystem.addUser(new User(new Name("Bojack", "Horseman"),
+                "micro@Gmail.com", "04112628", "123-4567",
+                hash));
+
+        in = new ByteArrayInputStream("1234567".getBytes());
+        System.setIn(in);
+        String username = menu.requestUsername();
+
+        in = new ByteArrayInputStream("64 digit has".getBytes());
+        System.setIn(in);
+        String password = menu.requestPassword();
+
+        assertEquals(false, menu.verifyUser(libSystem, username, password));
+    }
 }

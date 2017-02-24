@@ -11,14 +11,10 @@ public class BibliotecaApp {
         Menu menu = new Menu();
         System.out.println(menu.generateWelcome());
 
-        LoginHandler loginHandler = new LoginHandler();
-        String username = loginHandler.requestUsername();
-        if(username.equals("")) {
-            return;
-        }
-        String password = loginHandler.requestPassword();
+        String username = menu.requestUsername();
+        String password = menu.requestPassword();
 
-        if(loginHandler.validateLoginDetails(libSystem, username, password)) {
+        if(menu.verifyUser(libSystem, username, password)) {
             libSystem.addBook(new Book("Test-Driven Development",
                     new AuthorNamesList(new Name("Kent", "Beck")),
                     2003));
@@ -35,6 +31,9 @@ public class BibliotecaApp {
                     new Name("George", "Miller"), Rating.TEN));
 
             menu.loopMenu(libSystem);
+        }
+        else {
+            System.out.println("A user with those credentials do not exist.");
         }
 
     }

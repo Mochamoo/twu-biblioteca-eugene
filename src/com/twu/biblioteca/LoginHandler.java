@@ -5,6 +5,7 @@ import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 public class LoginHandler {
+
     public static String hashPassword(String password) {
         MessageDigest md;
         final String algorithm = "SHA-256";
@@ -23,26 +24,6 @@ public class LoginHandler {
         }
 
         return String.format("%064x", new java.math.BigInteger(1, md.digest()));
-    }
-
-    public String requestUsername() {
-        UsernameInput input = new UsernameInput();
-
-        System.out.println("Please enter the 7 digits of your username:");
-        String username = input.getInput();
-        if((username = input.getFormattedUsername(username)) == null) {
-            System.out.println("Username entered is not in correct format.");
-            return "";
-        }
-
-        return username;
-    }
-
-    public String requestPassword() {
-        Input input = new Input();
-
-        System.out.println("Please enter your password.");
-        return input.getInput();
     }
 
     public boolean validateLoginDetails(LibraryManagementSystem system,
