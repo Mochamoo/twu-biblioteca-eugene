@@ -18,6 +18,14 @@ public class MovieList {
         return movies.get(title);
     }
 
+    public boolean doesMovieExist(String title) {
+        if(getMovieByTitle(title) == null) {
+            return false;
+        }
+
+        return true;
+    }
+
     public Map<String, Movie> getMovies() {
         return movies;
     }

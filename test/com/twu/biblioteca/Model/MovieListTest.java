@@ -16,13 +16,23 @@ public class MovieListTest {
     }
 
     @Test
-    public void addMovieShouldIncrementListSizeByOne() throws Exception {
+    public void addMovieShouldIncrementListSizeByOne() {
         assertEquals(1, movies.size());
     }
 
     @Test
-    public void getMovieByTitleShouldReturnSpecifiedMovie() throws Exception {
+    public void getMovieByTitleShouldReturnSpecifiedMovie() {
         assertEquals("The Bee Movie", movies.getMovieByTitle("The Bee Movie").getTitle());
+    }
+
+    @Test
+    public void doesMovieExistShouldReturnTrueIfMovieIsInList() {
+        assertEquals(true, movies.doesMovieExist("The Bee Movie"));
+    }
+
+    @Test
+    public void doesMovieExistShouldReturnFalseIfMovieIsInList() {
+        assertEquals(false, movies.doesMovieExist("The Movie"));
     }
 
 }

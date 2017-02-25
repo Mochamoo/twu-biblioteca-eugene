@@ -40,7 +40,8 @@ public class BooksService {
     public boolean checkoutBook(String bookTitle) {
         Book book;
 
-        if((book = availableBooks.getBookByTitle(bookTitle)) != null) {
+        if(availableBooks.doesBookExist(bookTitle) == true) {
+            book = availableBooks.getBookByTitle(bookTitle);
             borrowedBooks.addBook(book);
             availableBooks.removeBook(book.getTitle());
             return true;
@@ -52,7 +53,8 @@ public class BooksService {
     public boolean returnBook(String bookTitle) {
         Book book;
 
-        if((book = borrowedBooks.getBookByTitle(bookTitle)) != null) {
+        if(borrowedBooks.doesBookExist(bookTitle)) {
+            book = borrowedBooks.getBookByTitle(bookTitle);
             availableBooks.addBook(book);
             borrowedBooks.removeBook(book.getTitle());
             return true;

@@ -21,6 +21,14 @@ public class BookList {
         return books.get(title);
     }
 
+    public boolean doesBookExist(String title) {
+        if(getBookByTitle(title) == null) {
+            return false;
+        }
+
+        return true;
+    }
+
     public void addBook(Book book) {
         books.put(book.getTitle(), book);
     }

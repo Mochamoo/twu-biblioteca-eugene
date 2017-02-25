@@ -32,4 +32,23 @@ public class BookListTest {
         assertEquals(1, bookList.size());
     }
 
+    @Test
+    public void doesBookExistShouldReturnTrueIfBookIsInList() {
+        addBookShouldPutOneNewBookIntoBookList();
+        bookList.addBook(new Book("Gears of War: Anvil Gate",
+                new AuthorList(new Author("Karen", "Travis")),
+                2010));
+
+        assertEquals(true, bookList.doesBookExist("Gears of War: Anvil Gate"));
+    }
+
+    @Test
+    public void doesBookExistShouldReturnFalseIfBookIsInList() {
+        addBookShouldPutOneNewBookIntoBookList();
+        bookList.addBook(new Book("Gears of War: Anvil Gate",
+                new AuthorList(new Author("Karen", "Travis")),
+                2010));
+
+        assertEquals(false, bookList.doesBookExist("Goats of War: Anvil Gate"));
+    }
 }

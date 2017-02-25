@@ -46,7 +46,8 @@ public class MoviesService {
     public boolean checkoutMovie(String movieTitle) {
         Movie movie;
 
-        if((movie = availableMovies.getMovieByTitle(movieTitle)) != null) {
+        if(availableMovies.doesMovieExist(movieTitle) == true) {
+            movie = availableMovies.getMovieByTitle(movieTitle);
             borrowedMovies.addMovie(movie);
             availableMovies.removeMovie(movie.getTitle());
             return true;
@@ -58,7 +59,8 @@ public class MoviesService {
     public boolean returnMovie(String movieTitle) {
         Movie movie;
 
-        if((movie = borrowedMovies.getMovieByTitle(movieTitle)) != null) {
+        if(borrowedMovies.doesMovieExist(movieTitle) == true) {
+            movie = borrowedMovies.getMovieByTitle(movieTitle);
             borrowedMovies.removeMovie(movie.getTitle());
             availableMovies.addMovie(movie);
             return true;
