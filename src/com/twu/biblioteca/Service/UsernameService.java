@@ -20,13 +20,18 @@ public class UsernameService {
         return true;
     }
 
-    public String getFormattedUsername(String username) {
+    public boolean isInvalidUsername(String username) {
         if(isCorrectLength(username) && isInteger(username)) {
-            String firstThreeDigits = username.substring(0, 3);
-            String lastFourDigits = username.substring(3, 7);
-            return String.format("%s-%s", firstThreeDigits, lastFourDigits);
+            return false;
         }
 
-        return null;
+        return true;
+    }
+
+    public String getFormattedUsername(String username) {
+        String firstThreeDigits = username.substring(0, 3);
+        String lastFourDigits = username.substring(3, 7);
+
+        return String.format("%s-%s", firstThreeDigits, lastFourDigits);
     }
 }

@@ -143,11 +143,12 @@ public class Menu {
 
         System.out.println("Please enter the 7 digits of your username:");
         String username = input.getInput();
-        while((username = usernameFormatter.getFormattedUsername(username)) == null) {
+        while(usernameFormatter.isInvalidUsername(username)) {
             System.out.println("Username entered is not in correct format.");
             System.out.println("Please enter the 7 digits of your username:");
             username = input.getInput();
         }
+        username = usernameFormatter.getFormattedUsername(username);
 
         return username;
     }
