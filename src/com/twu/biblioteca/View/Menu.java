@@ -2,7 +2,7 @@ package com.twu.biblioteca.View;
 
 import com.twu.biblioteca.Service.LibraryService;
 import com.twu.biblioteca.Model.Options;
-import com.twu.biblioteca.Service.LoginHandler;
+import com.twu.biblioteca.Service.LoginService;
 import com.twu.biblioteca.Service.MenuOptionsService;
 import com.twu.biblioteca.Service.UsernameService;
 
@@ -161,7 +161,7 @@ public class Menu {
 
     public boolean verifyUser(LibraryService libSystem,
                               String username, String password) {
-        LoginHandler handler = new LoginHandler();
+        LoginService handler = new LoginService();
 
         return handler.validateLoginDetails(libSystem, username, password);
     }

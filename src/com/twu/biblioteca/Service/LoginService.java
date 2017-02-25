@@ -4,7 +4,7 @@ import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
-public class LoginHandler {
+public class LoginService {
 
     public static String hashPassword(String password) {
         MessageDigest md;

@@ -2,7 +2,7 @@ package com.twu.biblioteca;
 
 import com.twu.biblioteca.Model.*;
 import com.twu.biblioteca.Service.LibraryService;
-import com.twu.biblioteca.Service.LoginHandler;
+import com.twu.biblioteca.Service.LoginService;
 import com.twu.biblioteca.View.Menu;
 
 public class BibliotecaApp {
@@ -30,7 +30,7 @@ public class BibliotecaApp {
         LibraryService libSystem = new LibraryService();
         libSystem.addUser(new User(new Name("Bojack", "Horseman"),
                 "micro@Gmail.com", "04112628", "000-0001",
-                LoginHandler.hashPassword("64 digit hash")));
+                LoginService.hashPassword("64 digit hash")));
         libSystem.addBook(new Book("Test-Driven Development",
                 new AuthorList(new Author("Kent", "Beck")),
                 2003));

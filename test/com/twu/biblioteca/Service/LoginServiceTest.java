@@ -6,17 +6,14 @@ import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
-import java.io.ByteArrayInputStream;
-
 import static org.junit.Assert.assertEquals;
 
-public class LoginHandlerTest {
-    private LoginHandler loginHandler;
-    private ByteArrayInputStream in;
+public class LoginServiceTest {
+    private LoginService loginService;
 
     @Before
     public void setup() {
-        loginHandler = new LoginHandler();
+        loginService = new LoginService();
     }
 
     @After
@@ -27,7 +24,7 @@ public class LoginHandlerTest {
     @Test
     public void getPasswordHashShouldReturnDigestOfUserEnteredString() {
         assertEquals("7d9b0460c4d96860da53c3e29da77a82edd879fcbadba8a00587776df0b99794",
-                LoginHandler.hashPassword("Esteemed character-actress"));
+                LoginService.hashPassword("Esteemed character-actress"));
     }
 
     @Test
@@ -41,6 +38,6 @@ public class LoginHandlerTest {
         String username = "123-4567";
         String password = "64 digit hash";
 
-        assertEquals(true, loginHandler.validateLoginDetails(libSystem, username, password));
+        assertEquals(true, loginService.validateLoginDetails(libSystem, username, password));
     }
 }
