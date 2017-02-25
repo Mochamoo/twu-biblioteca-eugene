@@ -1,34 +1,37 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.Service;
 
+import com.twu.biblioteca.Model.Author;
+import com.twu.biblioteca.Model.AuthorList;
+import com.twu.biblioteca.Model.Book;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class BooksManagerTest {
-    private BooksManager booksManager;
+public class BooksServiceTest {
+    private BooksService booksService;
 
     @Before
     public void setUp() {
-        booksManager = new BooksManager();
+        booksService = new BooksService();
         ;
-        booksManager.addBook(new Book("Test-Driven Development",
+        booksService.addBook(new Book("Test-Driven Development",
                 new AuthorList(new Author("Kent", "Beck")),
                 2003));
-        booksManager.addBook(new Book("Gears of War: Anvil Gate",
+        booksService.addBook(new Book("Gears of War: Anvil Gate",
                 new AuthorList(new Author("Karen", "Travis")),
                 2010));
-        booksManager.addBook(new Book("Artificial Intelligence: A Modern Approach",
+        booksService.addBook(new Book("Artificial Intelligence: A Modern Approach",
                 new AuthorList(new Author("Peter", "Norvig")),
                 2010));
-        booksManager.addBook(new Book("Introduction to the Design & Analysis of Algorithm",
+        booksService.addBook(new Book("Introduction to the Design & Analysis of Algorithm",
                 new AuthorList(new Author("Anany", "Levitin")),
                 2012));
     }
 
     @Test
     public void addBookShouldPutNewBookIntoAvailableBookList() {
-        assertEquals(4, booksManager.getNumberOfAvailableBooks());
+        assertEquals(4, booksService.getNumberOfAvailableBooks());
     }
 
     @Test
@@ -38,30 +41,30 @@ public class BooksManagerTest {
                      "Gears of War: Anvil Gate | Karen Travis | 2010\n" +
                      "Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
                      "Introduction to the Design & Analysis of Algorithm | Anany Levitin | 2012\n",
-                booksManager.generateBooksDisplay());
+                booksService.generateBooksDisplay());
     }
 
     @Test
     public void checkoutBookShouldReturnTrueOnSuccessfulCheckout() {
-        assertEquals(true, booksManager.checkoutBook("Gears of War: Anvil Gate"));
+        assertEquals(true, booksService.checkoutBook("Gears of War: Anvil Gate"));
     }
 
     @Test
     public void checkoutBookShouldReturnFalseOnUnsuccessfulCheckout() {
-        assertEquals(false, booksManager.checkoutBook("Non-existent book"));
+        assertEquals(false, booksService.checkoutBook("Non-existent book"));
     }
 
     @Test
     public void returnBookShouldReturnTrueOnSuccessfulReturn() {
-        booksManager.checkoutBook("Gears of War: Anvil Gate");
+        booksService.checkoutBook("Gears of War: Anvil Gate");
 
-        assertEquals(true, booksManager.returnBook("Gears of War: Anvil Gate"));
+        assertEquals(true, booksService.returnBook("Gears of War: Anvil Gate"));
     }
 
     @Test
     public void returnBookShouldReturnFalseOnInvalidBookName() {
-        booksManager.checkoutBook("Gears of War: Anvil Gate");
+        booksService.checkoutBook("Gears of War: Anvil Gate");
 
-        assertEquals(false, booksManager.returnBook("Goats of War: Manvil Grate"));
+        assertEquals(false, booksService.returnBook("Goats of War: Manvil Grate"));
     }
 }

@@ -1,16 +1,17 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.Service;
 
+import com.twu.biblioteca.Model.*;
 import org.junit.Before;
 import org.junit.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class LibraryManagementSystemTest {
-    private LibraryManagementSystem libSystem;
+public class LibraryServiceTest {
+    private LibraryService libSystem;
 
     @Before
     public void setup() {
-        libSystem = new LibraryManagementSystem();
+        libSystem = new LibraryService();
         libSystem.addBook(new Book("Test-Driven Development",
                 new AuthorList(new Author("Kent", "Beck")),
                 2003));
@@ -45,16 +46,6 @@ public class LibraryManagementSystemTest {
         assertEquals("Name: Bojack Horseman\n" +
                      "E-mail: micro@Gmail.com\n" +
                      "Phone: 0411262811", libSystem.generateUserInfoDisplay());
-    }
-
-    @Test
-    public void initialiseDatabaseShouldPopulateLibraryManagementSystemWithData() {
-        LibraryManagementSystem newLibSystem = new LibraryManagementSystem();
-        newLibSystem.initialiseDatabase();
-
-        assertEquals(4, newLibSystem.getNumberOfAvailableBooks());
-        assertEquals(1, newLibSystem.getNumberOfAvailableMovies());
-        assertEquals(1, newLibSystem.getNumberOfUsers());
     }
 
 }

@@ -1,6 +1,5 @@
 package com.twu.biblioteca.Service;
 
-import com.twu.biblioteca.Model.LibraryManagementSystem;
 import com.twu.biblioteca.Model.Name;
 import com.twu.biblioteca.Model.User;
 import org.junit.After;
@@ -33,7 +32,7 @@ public class LoginHandlerTest {
 
     @Test
     public void validateLoginDetailsShouldReturnTrueOnSuccessfulLogin() {
-        LibraryManagementSystem libSystem = new LibraryManagementSystem();
+        LibraryService libSystem = new LibraryService();
         String hash = "fdb8534840de9c6d46d6004697249a74c1730abfc3a2c090f940c91b388b66db";
         libSystem.addUser(new User(new Name("Bojack", "Horseman"),
                 "micro@Gmail.com", "04112628", "123-4567",

@@ -1,8 +1,7 @@
 package com.twu.biblioteca.View;
 
-import com.twu.biblioteca.Model.LibraryManagementSystem;
+import com.twu.biblioteca.Service.LibraryService;
 import com.twu.biblioteca.Model.Options;
-import com.twu.biblioteca.Service.Input;
 import com.twu.biblioteca.Service.LoginHandler;
 import com.twu.biblioteca.Service.MenuOptionsService;
 import com.twu.biblioteca.Service.UsernameService;
@@ -13,14 +12,14 @@ public class Menu {
         return "===Welcome to Biblioteca!===";
     }
 
-    public String generateMenu(LibraryManagementSystem libSystem) {
+    public String generateMenu(LibraryService libSystem) {
         String menuMessage = "Please make your selection (Enter one of the numbers below):\n";
         menuMessage += libSystem.generateUserOptionsString();
 
         return menuMessage;
     }
 
-    public String checkoutBook(LibraryManagementSystem libSystem) {
+    public String checkoutBook(LibraryService libSystem) {
         if(libSystem.getNumberOfAvailableBooks() == 0) {
             return "There are currently no books available.";
         }
@@ -36,7 +35,7 @@ public class Menu {
         return "That book is not available.";
     }
 
-    public String returnBook(LibraryManagementSystem libSystem) {
+    public String returnBook(LibraryService libSystem) {
         if(libSystem.getNumberOfBorrowedBooks() == 0) {
             return "There are currently no books being borrowed.";
         }
@@ -51,7 +50,7 @@ public class Menu {
         return "That is not a valid book to return.";
     }
 
-    public String checkoutMovie(LibraryManagementSystem libSystem) {
+    public String checkoutMovie(LibraryService libSystem) {
         if(libSystem.getNumberOfAvailableMovies() == 0) {
             return "There are currently no movies available.";
         }
@@ -67,7 +66,7 @@ public class Menu {
         return "That movie is unavailable.";
     }
 
-    public String returnMovie(LibraryManagementSystem libSystem) {
+    public String returnMovie(LibraryService libSystem) {
         if(libSystem.getNumberOfBorrowedMovies() == 0) {
             return "There are currently no movies being borrowed.";
         }
@@ -82,7 +81,7 @@ public class Menu {
         return "That is not a valid movie to return.";
     }
 
-    public void performOption(Options option, LibraryManagementSystem libSystem) {
+    public void performOption(Options option, LibraryService libSystem) {
         switch(option) {
             case LIST_BOOKS:
                 System.out.println(libSystem.generateBooksDisplay());
@@ -108,7 +107,7 @@ public class Menu {
         }
     }
 
-    public Options getOptionFromUser(LibraryManagementSystem libSystem) {
+    public Options getOptionFromUser(LibraryService libSystem) {
         MenuOptionsService optionsFormatter = new MenuOptionsService(libSystem);
         Input inputHandler = new Input();
         String input = inputHandler.getInput();
@@ -122,7 +121,7 @@ public class Menu {
         return optionsFormatter.convertInputToOption(input);
     }
 
-    public void loopMenu(LibraryManagementSystem libSystem) {
+    public void loopMenu(LibraryService libSystem) {
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {
@@ -154,7 +153,7 @@ public class Menu {
         return input.getInput();
     }
 
-    public boolean verifyUser(LibraryManagementSystem libSystem,
+    public boolean verifyUser(LibraryService libSystem,
                               String username, String password) {
         LoginHandler handler = new LoginHandler();
 

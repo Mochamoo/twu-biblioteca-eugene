@@ -1,7 +1,5 @@
 package com.twu.biblioteca.Service;
 
-import com.twu.biblioteca.Model.LibraryManagementSystem;
-
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -30,7 +28,7 @@ public class LoginHandler {
         return String.format("%064x", new java.math.BigInteger(1, md.digest()));
     }
 
-    public boolean validateLoginDetails(LibraryManagementSystem system,
+    public boolean validateLoginDetails(LibraryService system,
                                         String username, String password) {
         String hash = hashPassword(password);
 

@@ -1,19 +1,19 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.Service;
 
-import com.twu.biblioteca.Service.LoginHandler;
+import com.twu.biblioteca.Model.*;
 
 import java.util.ArrayList;
 
-public class LibraryManagementSystem {
-    BooksManager booksManager;
-    MoviesManager moviesManager;
+public class LibraryService {
+    BooksService booksService;
+    MoviesService moviesService;
     private User currentUser;
     private ArrayList<Options> userOptions;
     private UserList users;
 
-    public LibraryManagementSystem() {
-        booksManager = new BooksManager();
-        moviesManager = new MoviesManager();
+    public LibraryService() {
+        booksService = new BooksService();
+        moviesService = new MoviesService();
         users = new UserList();
         currentUser = null;
 
@@ -29,51 +29,51 @@ public class LibraryManagementSystem {
     }
 
     public void addBook(Book book) {
-        booksManager.addBook(book);
+        booksService.addBook(book);
     }
 
     public String generateBooksDisplay() {
-        return booksManager.generateBooksDisplay();
+        return booksService.generateBooksDisplay();
     }
 
     public boolean checkoutBook(String bookTitle) {
-        return booksManager.checkoutBook(bookTitle);
+        return booksService.checkoutBook(bookTitle);
     }
 
     public boolean returnBook(String bookTitle) {
-        return booksManager.returnBook(bookTitle);
+        return booksService.returnBook(bookTitle);
     }
 
     public int getNumberOfAvailableBooks() {
-        return booksManager.getNumberOfAvailableBooks();
+        return booksService.getNumberOfAvailableBooks();
     }
 
     public int getNumberOfBorrowedBooks() {
-        return booksManager.getNumberOfBorrowedBooks();
+        return booksService.getNumberOfBorrowedBooks();
     }
 
     public String generateMoviesDisplay() {
-        return moviesManager.generateMoviesDisplay();
+        return moviesService.generateMoviesDisplay();
     }
 
     public int getNumberOfAvailableMovies() {
-        return moviesManager.getNumberOfAvailableMovies();
+        return moviesService.getNumberOfAvailableMovies();
     }
 
     public int getNumberOfBorrowedMovies() {
-        return moviesManager.getNumberOfBorrowedMovies();
+        return moviesService.getNumberOfBorrowedMovies();
     }
 
     public void addMovie(Movie movie) {
-        moviesManager.addMovie(movie);
+        moviesService.addMovie(movie);
     }
 
     public boolean checkoutMovie(String movieTitle) {
-        return moviesManager.checkoutMovie(movieTitle);
+        return moviesService.checkoutMovie(movieTitle);
     }
 
     public boolean returnMovie(String movieTitle) {
-        return moviesManager.returnMovie(movieTitle);
+        return moviesService.returnMovie(movieTitle);
     }
 
     public void addUser(User user) {
@@ -125,26 +125,6 @@ public class LibraryManagementSystem {
 
     public Options getOption(int index) {
         return userOptions.get(index);
-    }
-
-    public void initialiseDatabase() {
-        addUser(new User(new Name("Bojack", "Horseman"),
-            "micro@Gmail.com", "04112628", "000-0001",
-            LoginHandler.hashPassword("64 digit hash")));
-        addBook(new Book("Test-Driven Development",
-            new AuthorList(new Author("Kent", "Beck")),
-            2003));
-        addBook(new Book("Gears of War: Anvil Gate",
-            new AuthorList(new Author("Karen", "Travis")),
-            2010));
-        addBook(new Book("Artificial Intelligence: A Modern Approach",
-            new AuthorList(new Author("Peter", "Norvig")),
-            2010));
-        addBook(new Book("Introduction to the Design & Analysis of Algorithm",
-            new AuthorList(new Author("Anany", "Levitin")),
-            2012));
-        addMovie(new Movie("Mad Max: Fury Road", 2015,
-            new Director("George", "Miller"), Rating.TEN));
     }
 
 }

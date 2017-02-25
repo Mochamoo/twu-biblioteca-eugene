@@ -1,10 +1,13 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.Service;
 
-public class BooksManager {
+import com.twu.biblioteca.Model.Book;
+import com.twu.biblioteca.Model.BookList;
+
+public class BooksService {
     private BookList availableBooks;
     private BookList borrowedBooks;
 
-    public BooksManager() {
+    public BooksService() {
         availableBooks = new BookList();
         borrowedBooks = new BookList();
     }

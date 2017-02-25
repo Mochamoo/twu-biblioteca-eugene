@@ -1,10 +1,13 @@
-package com.twu.biblioteca.Model;
+package com.twu.biblioteca.Service;
 
-public class MoviesManager {
+import com.twu.biblioteca.Model.Movie;
+import com.twu.biblioteca.Model.MovieList;
+
+public class MoviesService {
     private MovieList availableMovies;
     private MovieList borrowedMovies;
 
-    public MoviesManager() {
+    public MoviesService() {
         availableMovies = new MovieList();
         borrowedMovies = new MovieList();
     }

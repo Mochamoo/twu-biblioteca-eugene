@@ -1,12 +1,11 @@
 package com.twu.biblioteca.Service;
 
-import com.twu.biblioteca.Model.LibraryManagementSystem;
 import com.twu.biblioteca.Model.Options;
 
 public class MenuOptionsService {
-    LibraryManagementSystem libSystem;
+    LibraryService libSystem;
 
-    public MenuOptionsService(LibraryManagementSystem libSystem) {
+    public MenuOptionsService(LibraryService libSystem) {
         this.libSystem = libSystem;
     }
 

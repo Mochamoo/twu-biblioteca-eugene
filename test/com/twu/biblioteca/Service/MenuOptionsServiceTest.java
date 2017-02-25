@@ -1,6 +1,5 @@
 package com.twu.biblioteca.Service;
 
-import com.twu.biblioteca.Model.LibraryManagementSystem;
 import com.twu.biblioteca.Model.Options;
 import org.junit.Before;
 import org.junit.Test;
@@ -8,12 +7,12 @@ import org.junit.Test;
 import static org.junit.Assert.assertEquals;
 
 public class MenuOptionsServiceTest {
-    LibraryManagementSystem libSystem;
+    LibraryService libSystem;
     private MenuOptionsService input;
 
     @Before
     public void setUp() throws Exception {
-        libSystem = new LibraryManagementSystem();
+        libSystem = new LibraryService();
         input = new MenuOptionsService(libSystem);
     }
 

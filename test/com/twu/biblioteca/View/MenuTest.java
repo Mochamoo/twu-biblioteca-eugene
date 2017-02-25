@@ -1,6 +1,7 @@
 package com.twu.biblioteca.View;
 
 import com.twu.biblioteca.Model.*;
+import com.twu.biblioteca.Service.LibraryService;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
@@ -10,14 +11,14 @@ import java.io.ByteArrayInputStream;
 import static org.junit.Assert.assertEquals;
 
 public class MenuTest {
-    private LibraryManagementSystem libSystem;
+    private LibraryService libSystem;
     private Menu menu;
     private User customer;
     private ByteArrayInputStream in;
 
     @Before
     public void setUp() {
-        libSystem = new LibraryManagementSystem();
+        libSystem = new LibraryService();
         menu = new Menu();
         customer = new User(new Name("Bojack", "Horseman"), "micro@Gmail.com",
                 "04112628", "123-4567", "64 digit hash");
@@ -175,7 +176,7 @@ public class MenuTest {
 
     @Test
     public void verifyUserShouldReturnTrueIfUserCredentialsAreCorrect() {
-        LibraryManagementSystem libSystem = new LibraryManagementSystem();
+        LibraryService libSystem = new LibraryService();
         String hash = "fdb8534840de9c6d46d6004697249a74c1730abfc3a2c090f940c91b388b66db";
         libSystem.addUser(new User(new Name("Bojack", "Horseman"),
                 "micro@Gmail.com", "04112628", "123-4567",
@@ -194,7 +195,7 @@ public class MenuTest {
 
     @Test
     public void verifyUserShouldReturnFalseIfUserCredentialsIncorrect() {
-        LibraryManagementSystem libSystem = new LibraryManagementSystem();
+        LibraryService libSystem = new LibraryService();
         String hash = "fdb8534840de9c6d46d6004697249a74c1730abfc3a2c090f940c91b388b66db";
         libSystem.addUser(new User(new Name("Bojack", "Horseman"),
                 "micro@Gmail.com", "04112628", "123-4567",
