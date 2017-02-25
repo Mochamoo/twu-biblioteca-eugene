@@ -17,24 +17,24 @@ public class MenuOptionsServiceTest {
     }
 
     @Test
-    public void validateAgainstOptionsShouldReturnNullOnNonInteger() {
-        assertEquals(null, input.validateAgainstOptions("..."));
+    public void validateAgainstOptionsShouldReturnFalseOnNonInteger() {
+        assertEquals(false, input.isValidInteger("..."));
     }
 
     @Test
-    public void validateAgainstOptionsShouldReturnNullOnOutOfBoundsInteger() {
-        assertEquals(null, input.validateAgainstOptions("0"));
-        assertEquals(null, input.validateAgainstOptions("9"));
+    public void validateAgainstOptionsShouldReturnFalseOnOutOfBoundsInteger() {
+        assertEquals(false, input.isValidInteger("0"));
+        assertEquals(false, input.isValidInteger("9"));
     }
 
     @Test
-    public void validateAgainstOptionsShouldReturnInputMinus1OnValidInput() {
-        assertEquals("2", input.validateAgainstOptions("3"));
+    public void validateAgainstOptionsShouldReturnTrueOnValidInput() {
+        assertEquals(true, input.isValidInteger("3"));
     }
 
     @Test
     public void convertInputToOptionShouldReturnOptionEnumOnValidInput() {
-        assertEquals(Options.QUIT, input.convertInputToOption("7"));
+        assertEquals(Options.QUIT, input.convertInputToOption("8"));
     }
 
 }

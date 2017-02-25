@@ -9,7 +9,7 @@ public class MenuOptionsService {
         this.libSystem = libSystem;
     }
 
-    public String validateAgainstOptions(String input) {
+    public boolean isValidInteger(String input) {
         int userSelection;
 
         try {
@@ -19,16 +19,16 @@ public class MenuOptionsService {
             }
 
         } catch(NumberFormatException nfe) {
-            return null;
+            return false;
         }
 
-        //Will be using this number to access array, so - 1
-        //is needed to get correct index in userOptions
-        return Integer.toString(userSelection - 1);
+        return true;
     }
 
     public Options convertInputToOption(String input) {
-        return libSystem.getOption(Integer.parseInt(input));
+        //Will be using this number to access array, so - 1
+        //is needed to get correct index in userOptions
+        return libSystem.getOption(Integer.parseInt(input) - 1);
     }
 
 }

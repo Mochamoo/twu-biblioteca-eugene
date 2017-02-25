@@ -112,7 +112,7 @@ public class Menu {
         Input inputHandler = new Input();
         String input = inputHandler.getInput();
 
-        while((input = optionsFormatter.validateAgainstOptions(input)) == null) {
+        while((optionsFormatter.isValidInteger(input)) == false) {
             System.out.println("Select a valid option!");
             System.out.println(generateMenu(libSystem));
             input = inputHandler.getInput();
