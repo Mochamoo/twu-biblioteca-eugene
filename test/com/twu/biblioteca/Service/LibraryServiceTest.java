@@ -36,16 +36,14 @@ public class LibraryServiceTest {
     }
 
     @Test
-    public void generateUserInfoDisplayShouldReturnCurrentUserInformation() {
+    public void generateUserInfoDisplayShouldReturnArrayOfFourLines() {
         User currentUser = new User(new Name("Bojack", "Horseman"),
                 "micro@Gmail.com", "0411262811", "000-0001",
                 "64 digit hash");
         libSystem.addUser(currentUser);
         libSystem.setCurrentUser(currentUser);
 
-        assertEquals("Name: Bojack Horseman\n" +
-                     "E-mail: micro@Gmail.com\n" +
-                     "Phone: 0411262811", libSystem.generateUserInfoDisplay());
+        assertEquals(4, libSystem.generateUserInfoDisplay().size());
     }
 
 }

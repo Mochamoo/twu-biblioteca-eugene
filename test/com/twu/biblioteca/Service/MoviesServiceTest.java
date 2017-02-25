@@ -25,13 +25,11 @@ public class MoviesServiceTest {
     }
 
     @Test
-    public void generateMoviesDisplayShouldReturnHeaderAndListOfMovies() {
+    public void generateMoviesDisplayShouldReturnHeaderOneMovieAndNewlineToArray() {
         moviesService.addMovie(new Movie("The Bee Movie", 1998,
                 new Director("Edgar", "Wright"), Rating.ONE));
 
-        assertEquals("Name | Year | Director | Rating\n" +
-                        "The Bee Movie | 1998 | Edgar Wright | 1\n",
-                moviesService.generateMoviesDisplay());
+        assertEquals(3, moviesService.generateMoviesDisplay().size());
     }
 
     @Test

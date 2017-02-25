@@ -32,7 +32,7 @@ public class LibraryService {
         booksService.addBook(book);
     }
 
-    public String generateBooksDisplay() {
+    public ArrayList<String> generateBooksDisplay() {
         return booksService.generateBooksDisplay();
     }
 
@@ -52,7 +52,7 @@ public class LibraryService {
         return booksService.getNumberOfBorrowedBooks();
     }
 
-    public String generateMoviesDisplay() {
+    public ArrayList<String> generateMoviesDisplay() {
         return moviesService.generateMoviesDisplay();
     }
 
@@ -97,26 +97,29 @@ public class LibraryService {
         return false;
     }
 
-    public String generateUserInfoDisplay() {
-        String userInfo = "Name: " + currentUser.getFullName() + "\n";
-        userInfo += "E-mail: " + currentUser.getEmail() + "\n";
-        userInfo += "Phone: " + currentUser.getPhoneNumber();
+    public ArrayList<String> generateUserInfoDisplay() {
+        ArrayList<String> linesOfUserInfo = new ArrayList<String>();
 
-        return userInfo;
+        linesOfUserInfo.add("Name: " + currentUser.getFullName());
+        linesOfUserInfo.add("E-mail: " + currentUser.getEmail());
+        linesOfUserInfo.add("Phone: " + currentUser.getPhoneNumber());
+        linesOfUserInfo.add(String.format("%n"));
+
+        return linesOfUserInfo;
     }
 
-    public String generateUserOptionsString() {
-        StringBuilder availableOptionsToUser = new StringBuilder();
+    public ArrayList<String> generateUserOptionsString() {
+        ArrayList<String> linesOfUserOptions = new ArrayList<String>();
         int i = 1;
 
         for(Options option : userOptions) {
-            availableOptionsToUser.append(
-                    String.format("%d) %s\n", i, option.getOptionString()));
+            linesOfUserOptions.add(String.format("%d) %s",
+                    i, option.getOptionString()));
 
             ++i;
         }
 
-        return availableOptionsToUser.toString();
+        return linesOfUserOptions;
     }
 
     public int getNumOptions() {

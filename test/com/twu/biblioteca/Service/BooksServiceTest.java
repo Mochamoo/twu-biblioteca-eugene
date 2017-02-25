@@ -35,13 +35,8 @@ public class BooksServiceTest {
     }
 
     @Test
-    public void generateBooksDisplayShouldShowAllTitlesAuthorsAndPublishYear() {
-        assertEquals("Title | Author | Year Published\n" +
-                     "Test-Driven Development | Kent Beck | 2003\n" +
-                     "Gears of War: Anvil Gate | Karen Travis | 2010\n" +
-                     "Artificial Intelligence: A Modern Approach | Peter Norvig | 2010\n" +
-                     "Introduction to the Design & Analysis of Algorithm | Anany Levitin | 2012\n",
-                booksService.generateBooksDisplay());
+    public void generateBooksDisplayShouldAddHeaderFourBookRecordsAndNewlineIntoArray() {
+        assertEquals(6, booksService.generateBooksDisplay().size());
     }
 
     @Test

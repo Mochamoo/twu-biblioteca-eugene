@@ -3,6 +3,8 @@ package com.twu.biblioteca.Service;
 import com.twu.biblioteca.Model.Book;
 import com.twu.biblioteca.Model.BookList;
 
+import java.util.ArrayList;
+
 public class BooksService {
     private BookList availableBooks;
     private BookList borrowedBooks;
@@ -20,19 +22,19 @@ public class BooksService {
         return "Title | Author | Year Published";
     }
 
-    public String generateBooksDisplay() {
-        StringBuilder headerAndListOfBooks = new StringBuilder();
-        headerAndListOfBooks.append(generateBookHeader());
-        headerAndListOfBooks.append("\n");
+    public ArrayList<String> generateBooksDisplay() {
+        ArrayList<String> headerAndListOfBooks = new ArrayList<String>();
+        headerAndListOfBooks.add(generateBookHeader());
 
         for(Book book : availableBooks.getBooks().values()) {
-            headerAndListOfBooks.append(String.format("%s | %s | %d\n",
+            headerAndListOfBooks.add(String.format("%s | %s | %d",
                     book.getTitle(),
                     book.getAuthorNames(),
                     book.getYearPublished()));
         }
+        headerAndListOfBooks.add(String.format("%n"));
 
-        return headerAndListOfBooks.toString();
+        return headerAndListOfBooks;
     }
 
     public boolean checkoutBook(String bookTitle) {

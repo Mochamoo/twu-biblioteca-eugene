@@ -6,17 +6,23 @@ import com.twu.biblioteca.Service.LoginHandler;
 import com.twu.biblioteca.Service.MenuOptionsService;
 import com.twu.biblioteca.Service.UsernameService;
 
+import java.util.ArrayList;
+
 public class Menu {
 
     public String generateWelcome() {
         return "===Welcome to Biblioteca!===";
     }
 
-    public String generateMenu(LibraryService libSystem) {
-        String menuMessage = "Please make your selection (Enter one of the numbers below):\n";
-        menuMessage += libSystem.generateUserOptionsString();
+    public ArrayList<String> generateMenu(LibraryService libSystem) {
+        ArrayList<String> linesOfMenu = new ArrayList<String>();
+        linesOfMenu.add("Please make your selection (Enter one of the numbers below):");
 
-        return menuMessage;
+        for(String lineOfUserOptions : libSystem.generateUserOptionsString()) {
+            linesOfMenu.add(lineOfUserOptions);
+        }
+
+        return linesOfMenu;
     }
 
     public String checkoutBook(LibraryService libSystem) {
@@ -84,7 +90,7 @@ public class Menu {
     public void performOption(Options option, LibraryService libSystem) {
         switch(option) {
             case LIST_BOOKS:
-                System.out.println(libSystem.generateBooksDisplay());
+                loopThroughAndDisplay(libSystem.generateBooksDisplay());
                 break;
             case CHECKOUT_BOOK:
                 System.out.println(checkoutBook(libSystem));
@@ -93,7 +99,7 @@ public class Menu {
                 System.out.println(returnBook(libSystem));
                 break;
             case LIST_MOVIES:
-                System.out.println(libSystem.generateMoviesDisplay());
+                loopThroughAndDisplay(libSystem.generateMoviesDisplay());
                 break;
             case CHECKOUT_MOVIE:
                 System.out.println(checkoutMovie(libSystem));
@@ -102,7 +108,7 @@ public class Menu {
                 System.out.println(returnMovie(libSystem));
                 break;
             case VIEW_USER_INFO:
-                System.out.println(libSystem.generateUserInfoDisplay() + "\n");
+                loopThroughAndDisplay(libSystem.generateUserInfoDisplay());
                 break;
         }
     }
@@ -114,7 +120,7 @@ public class Menu {
 
         while((optionsFormatter.isValidInteger(input)) == false) {
             System.out.println("Select a valid option!");
-            System.out.println(generateMenu(libSystem));
+            loopThroughAndDisplay(generateMenu(libSystem));
             input = inputHandler.getInput();
         }
 
@@ -125,7 +131,7 @@ public class Menu {
         Options selectedOption = null;
 
         while(selectedOption != Options.QUIT) {
-            System.out.println(generateMenu(libSystem));
+            loopThroughAndDisplay(generateMenu(libSystem));
             selectedOption = getOptionFromUser(libSystem);
             performOption(selectedOption, libSystem);
         }
@@ -158,5 +164,11 @@ public class Menu {
         LoginHandler handler = new LoginHandler();
 
         return handler.validateLoginDetails(libSystem, username, password);
+    }
+
+    public void loopThroughAndDisplay(ArrayList<String> arrayOfLines) {
+        for(String singleLine : arrayOfLines) {
+            System.out.println(singleLine);
+        }
     }
 }

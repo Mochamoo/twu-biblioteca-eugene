@@ -3,6 +3,8 @@ package com.twu.biblioteca.Service;
 import com.twu.biblioteca.Model.Movie;
 import com.twu.biblioteca.Model.MovieList;
 
+import java.util.ArrayList;
+
 public class MoviesService {
     private MovieList availableMovies;
     private MovieList borrowedMovies;
@@ -16,20 +18,21 @@ public class MoviesService {
         return "Name | Year | Director | Rating";
     }
 
-    public String generateMoviesDisplay() {
-        StringBuilder headerAndListOfMovies = new StringBuilder();
-        headerAndListOfMovies.append(generateMovieHeader());
-        headerAndListOfMovies.append("\n");
+    public ArrayList<String> generateMoviesDisplay() {
+        ArrayList<String> headerAndListOfMovies = new ArrayList<String>();
+        headerAndListOfMovies.add(generateMovieHeader());
+
 
         for(Movie movie : availableMovies.getMovies().values()) {
-            headerAndListOfMovies.append(String.format("%s | %d | %s | %s\n",
+            headerAndListOfMovies.add(String.format("%s | %d | %s | %s",
                     movie.getTitle(),
                     movie.getYearReleased(),
                     movie.getDirectorName(),
                     movie.getRatingInString()));
         }
+        headerAndListOfMovies.add(String.format("%n"));
 
-        return headerAndListOfMovies.toString();
+        return headerAndListOfMovies;
     }
 
     public int getNumberOfAvailableMovies() {
