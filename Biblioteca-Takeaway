@@ -152,6 +152,29 @@
 
 17) Single Role Principle. Single Role Principle. Single Role Principle.
 
+====From Javascript Koans====
+1) If you have a function that simply has an if-else statement that evaluates
+   something then returns true or false, get rid of the if-else. For example,
+   instead of:
+   function isGreaterThan8(someInt) {
+       if(someInt > 8) {
+           return true;
+       }
+       
+       return false;
+    }
+    
+    Have:
+    function isGreaterThan8(someInt) {
+        return someInt > 8;
+    }
+
+2) If a function's purpose is simply to evaluate one thing then return true/false,
+   it might be worth it to get rid of the function altogether and lump the
+   evaluation with another method, since the single evaluation alone can't
+   really justify dedicating an enitre function to it. There IS such a thing
+   as too loosely coupled.
+
 
 
 
