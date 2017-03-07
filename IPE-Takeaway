@@ -1,0 +1,54 @@
+Below are some helpful links that helped with research:
+https://www.youtube.com/watch?v=Kp5BSBoOw8k
+https://www.youtube.com/watch?v=2CFufshk86l
+https://www.thegeekstuff.com/2011/08/git-install-configure
+https://www.atlassian.com/git/tutorials/setting-up-a-repository
+For TDD in IntelliJ: https://www.youtube.com/watch?v=Bld3644bIAo
+http://virtualnerd.com/pre-algebra/factors-fractions-exponents/prime-factorization-greatest-common-factor/prime-factorization/prime-factorization-by-tree
+http://stackoverflow.com/questions/1538644/c-determine-if-a-number-is-prime
+http://stackoverflow.com/questions/5811151/why-do-we-check-up-to-the-square-root-of-a-prime-number-to-determine-if-it-is-pr
+
+What you learned:
+1) Test names should reflect almost exactly the condition being tested. For instance:
+   getNextPrimeShouldReturnNextPrimeEvenWithNonPrime(), instead of:
+   testGetNextPrime()
+2) Don't use the wildcard (*) on import statements unless you plan to use over 60% of the methods
+   in that class
+3) Be more concrete with your class names. DiamondExercises's purpose is to print out stars of diamonds,
+   so a Printer class is a good start
+4) Don't test more than one thing in a testing method. For example, don't test an empty list then move on to
+   test a filled list in the same test method
+5) Local variables should be less vague. For example, if testing prime numbers:
+   ArrayList<Integer> primeFactors;, over:
+   ArrayList<Intger> expected;
+6) Don't describe the data type in the method name. For instance:
+   isNumPrime(int i)
+   The reason is that the compiler already knows and enforces the data type in the parameter, so we already
+   know that isNumPrime(), accepting an integer, tells us if a number is prime. We don't need the "Num" in
+   the method name to tell us that. Instead, have:
+   isPrime(int i)
+   That, by itself, should tell us everything
+7) Rely on self-documenting code as much as possible. Comments should be kept to a minimum and the code
+   should be readable to the point where comments are rarely needed
+8) If you are going to concatenate a String in a loop, use StringBuilder instead. The Java compiler already
+   converts a lot of the String literal concatenation into a StringBuilder instance at compile time, so if
+   you have a loop, the compiler will append a new instance of StringBuilder().toString(), which can be
+   expensive. So instead, if you have a loop, create a StringBuilder instance before the loop, then make
+   sure you use the StringBuilder's append() within the loop. That will stop the compiler from making its
+   "optimisation" for you.
+   http://stackoverflow.com/questions/14927630/java-string-concat-vs-stringbuilder-optimised-so-what-should-i-do
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

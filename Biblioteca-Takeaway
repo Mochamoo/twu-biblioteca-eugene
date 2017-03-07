@@ -1,0 +1,177 @@
+1)To add new third party library in Intellij (Apache Commons Lang)
+ 1) Download bin if you can. You want the jar file.
+ 2) Move the jar into the lib folder of your project.
+ 3) With Intellij, make sure the newly added jar is seen in the project view.
+ 4) Right click it -> Add as library -> Ok
+ 5) Use:
+    Import org.apache.commons.lang3.StringUtils
+
+2) https://github.com/Mochamoo/twu-biblioteca-eugene/issues/3
+ One reason to use Apache commons lang is for its StringUtil, specifically to
+ join Strings together separated by a delimiter. Previously, I had code
+ something like this:
+
+ public String getAuthorNames() {
+     StringBuilder authorNames = new StringBuilder();
+ 
+     for(Author eachAuthor : authorList) {
+         authorNames.append(eachAuthor.getFullName());
+ 	authorNames.append("\n");
+     }
+ 
+     return authorNames.toString();
+ }
+ 
+ You should instead use StringUtil:
+
+ public String getAuthorNames() {
+     ArrayList<String> authorNames = new ArrayList<String>();
+ 
+     for(Author eachAuthor : authorList) {
+         authorNames.add(eachAuthor.getFullName());
+     }
+
+     return StringUtils.join(authorNames, ", ");
+ }
+
+3) https://github.com/Mochamoo/twu-biblioteca-eugene/issues/4
+   Make sure variable names are crystal clear. Even when you think they are,
+   check again. For example:
+
+   getAuthor()
+
+   Implies an Author object is returned, when in actual fact it was supposed
+   to return a String of the author's name. Instead, have:
+
+   getAuthorName(), or even:
+   getAuthorNameInString()
+
+   The point is to not let a variable, or any kind of name, be vague.
+
+4) https://github.com/Mochamoo/twu-biblioteca-eugene/issues/5
+   Don't have a class populate itself. If you need dummy data, have a method
+   in the main class do it. For example, class BookList shouldn't populate
+   itself. Instead, BookList should have an add() method, and another class
+   should be the one calling the add() method.
+
+5) If a method generates a String and returns it instead of printing or
+   displaying, then don't call the method displayXXX(), it's misleading.
+   Instead, call it generateXXX() (for example, generateMenuForDisplay()).
+
+6) String.format() is more preferable than a bunch of .add() or .append()
+   or concatenations. You've done some of this in C before:
+
+   String.format(" %s | %d | %s %n", authorFullName, someInteger, someString);
+
+   where %s will get replaced by a String, %d will get replaced by an int
+   and %n will append a newline.
+
+7) Don't use fName and lName as first name and last name, respectively. Use
+   the firstName and lastName.
+
+8) Test before refactoring. Test before anything.
+
+9) Conceptually, a user might "have" options, but those options were granted
+   by the library. The library does not query the user for their options
+   every time the user comes in. It is the user who queries the library
+   for their options. Try to model the real world as best as possible.
+
+10) Classes should have ONE role, and methods should do ONE thing. A 
+    LibraryService class should manage library items like a library does,
+    and its checkoutBook() method should simply checkout a book. If the
+    method succeeds, then simply return true, and if it fails, false.
+    Don't have the method return a String explaining why it failed, as
+    that String alone may not be the actual reason, and because you
+    are giving responsibility to the method to explain failure when its
+    purpose is to checkout a book. This is called Single Role Principle (SRP).
+    Let that method return a boolean, and for the class that called that
+    method do the interpreting.
+
+11) Try your best to avoid "\n" for newline, as that may not be cross platform
+    compatible. Instead, use String.format("%n"), which is.
+
+12) Instead of having:
+
+    while(somethingYouWant == null || somethingBad == true) {
+        doSomething();
+    }
+
+    have:
+
+    while(isInvalid(thingToCheck)) {
+	doSomthing();
+    }
+
+    This is more readable. Similarly, don't do assignment in comparison:
+
+    while((input = menuServiceFormatter.getFormattedOption()) == null) {
+	tellUserToInputAgain();
+    }
+
+    This can also be confusing. You did this because you didn't want to
+    assign to input twice. But that's okay as long as the code is more
+    readable. Instead, have:
+
+    while(menuServiceFormatter.isInvalid(input)) {
+	tellUserToInputAgain();
+    }
+    input = menuServiceFormatter.getFormattedOption();
+
+    And have isInvalid() call all the validation methods it needs to verify
+    the input is correct.
+
+13) Separate classes into the following packages for a console application:
+    Model - This is for classes that simply model something, but does no
+            interactions between classes. Things like Book, Movie or Author.
+            Even BookList, which holds and does operations over many books
+            can be here.
+    View - This is for classes that interact with the user. Things like
+           the Menu class, because it displays the menu to the user. And
+           also things like Input class, because it interacts with the user
+           to get Input. Read Point #14 for a little more explanation on this.
+    Service - This is for classes that perform operations on the Model and
+              actually drive the application, or business logic. Things like
+              the LibraryService or MoviesService class go here.
+
+14) https://github.com/Mochamoo/twu-biblioteca-eugene/issues/14
+    Ideally, your printing should go into one place. Imagine if you had let
+    LibraryService print out that bookReturn had failed, then LibraryService
+    would have taken responsibility from a class in the View package.
+
+15) If a book has an author, just make an Author class, even if the book
+    only wants the author's name. The Author can then hold a Name object.
+    This is more for future-proofing, where the client in the future may
+    want to add more information to the author.
+
+16) If you have lines of Strings you want to display, don't put them all
+    into one variable then display it. Instead, find some way to loop
+    through and add each line to an array (I used ArrayList). Then, have
+    a method that takes an ArrayList<String> and loop through, printing
+    each one with println(). The reason goes back to avoiding "\n" and
+    a lot of String appending or concatenating.
+
+17) Single Role Principle. Single Role Principle. Single Role Principle.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
